@@ -1,0 +1,2 @@
+# GitHubMobile
+GitHubで言語がSwiftで書かれたStarの多い順のリポジトリ一覧を表示するクライアントです。
