@@ -65,6 +65,10 @@ class RepositoryTableViewController: UITableViewController {
         cell.shortDescriptionHTML.attributedText = repositories[indexPath.row].shortDescriptionHTML
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "OpenRepositoryDetail", sender: repositories[indexPath.row].url)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -101,14 +105,17 @@ class RepositoryTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let detailVC = segue.destination as! RepositoryDetailViewController
+        
+        if let url = sender as? URL {
+            detailVC.url = url
+        }
     }
-    */
 
 }

@@ -12,6 +12,7 @@
 		053075491FF67DF700489708 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053075481FF67DF700489708 /* Alamofire.framework */; };
 		0530754A1FF67DFE00489708 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053075481FF67DF700489708 /* Alamofire.framework */; };
 		0530754B1FF67DFE00489708 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 053075481FF67DF700489708 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0530754D1FF6817200489708 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0530754C1FF6817200489708 /* RepositoryDetailViewController.swift */; };
 		0541D39B1FF3AB9A006DED14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */; };
 		0541D3A01FF3AB9A006DED14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0541D39E1FF3AB9A006DED14 /* Main.storyboard */; };
 		0541D3A21FF3AB9A006DED14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0541D3A11FF3AB9A006DED14 /* Assets.xcassets */; };
@@ -66,6 +67,7 @@
 /* Begin PBXFileReference section */
 		053075441FF67B8F00489708 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		053075481FF67DF700489708 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		0530754C1FF6817200489708 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		0541D3971FF3AB9A006DED14 /* GitHubMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0541D39F1FF3AB9A006DED14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */,
 				056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */,
 				056205E11FF62B510044CB85 /* RepositoryCell.swift */,
+				0530754C1FF6817200489708 /* RepositoryDetailViewController.swift */,
 				0541D3A11FF3AB9A006DED14 /* Assets.xcassets */,
 				0541D3A61FF3AB9A006DED14 /* Info.plist */,
 				056205ED1FF670650044CB85 /* GitHubClient */,
@@ -343,6 +346,7 @@
 				056205EC1FF65ACE0044CB85 /* String+Extension.swift in Sources */,
 				05D975831FF4F0DF00616E07 /* GitHubGraphQLAPI.swift in Sources */,
 				056205E61FF6329E0044CB85 /* RepositoryTableViewController.swift in Sources */,
+				0530754D1FF6817200489708 /* RepositoryDetailViewController.swift in Sources */,
 				056205E31FF62B510044CB85 /* RepositoryCell.swift in Sources */,
 				056205E81FF64D2F0044CB85 /* GitHubRepository.swift in Sources */,
 				0541D39B1FF3AB9A006DED14 /* AppDelegate.swift in Sources */,

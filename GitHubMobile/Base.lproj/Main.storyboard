@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,11 +35,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="repositoryCell" rowHeight="64" id="juE-tp-4P2" customClass="RepositoryCell" customModule="GitHubMobile" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="repositoryCell" rowHeight="64" id="juE-tp-4P2" customClass="RepositoryCell" customModule="GitHubMobile" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="juE-tp-4P2" id="O53-6d-FvJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="63.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vnB-2h-mmW">
@@ -49,13 +50,13 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name With Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CW-Rc-7H1">
-                                            <rect key="frame" x="69" y="10" width="296" height="19.5"/>
+                                            <rect key="frame" x="69" y="10" width="262" height="19.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKE-Uy-Us6">
-                                            <rect key="frame" x="69" y="34" width="296" height="19.5"/>
+                                            <rect key="frame" x="69" y="34" width="262" height="19.5"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Short DescriptionHTML">
                                                     <attributes>
@@ -94,10 +95,43 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="iAs-Au-rPs"/>
+                    <connections>
+                        <segue destination="eZm-vM-KXP" kind="show" identifier="OpenRepositoryDetail" id="28O-aW-ds8"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KNL-2d-aDl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-412" y="36"/>
+        </scene>
+        <!--Repository Detail View Controller-->
+        <scene sceneID="7r4-xT-iCW">
+            <objects>
+                <viewController id="eZm-vM-KXP" customClass="RepositoryDetailViewController" customModule="GitHubMobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9oO-ob-5mB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t4E-6r-dSC">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="t4E-6r-dSC" firstAttribute="leading" secondItem="05t-BK-EIx" secondAttribute="leading" id="F5D-CD-QdR"/>
+                            <constraint firstItem="t4E-6r-dSC" firstAttribute="trailing" secondItem="05t-BK-EIx" secondAttribute="trailing" id="G4d-YW-HQn"/>
+                            <constraint firstItem="t4E-6r-dSC" firstAttribute="top" secondItem="05t-BK-EIx" secondAttribute="top" id="WTm-HR-3BX"/>
+                            <constraint firstItem="t4E-6r-dSC" firstAttribute="bottom" secondItem="05t-BK-EIx" secondAttribute="bottom" id="dMB-vF-2rA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="05t-BK-EIx"/>
+                    </view>
+                    <connections>
+                        <outlet property="webview" destination="t4E-6r-dSC" id="E7N-aZ-tAw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zah-CY-R8A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="448.80000000000001" y="35.532233883058474"/>
         </scene>
     </scenes>
 </document>
