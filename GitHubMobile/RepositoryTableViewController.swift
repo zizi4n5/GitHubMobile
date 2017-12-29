@@ -66,6 +66,7 @@ class RepositoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "repositoryCell", for: indexPath) as! RepositoryCell
+        cell.avatarImage.image = nil
         cell.avatarImage.af_setImage(withURL: repositories[indexPath.row].owner.avatarUrl)
         cell.nameWithOwner.text = repositories[indexPath.row].nameWithOwner
         cell.shortDescriptionHTML.attributedText = repositories[indexPath.row].shortDescriptionHTML
