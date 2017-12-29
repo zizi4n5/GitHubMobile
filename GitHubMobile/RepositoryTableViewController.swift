@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class RepositoryTableViewController: UITableViewController {
 
@@ -31,6 +32,16 @@ class RepositoryTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.indexPathsForSelectedRows?.forEach {
+            tableView.deselectRow(at: $0, animated: true)
+        }
+
+        tableView.flashScrollIndicators()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,6 +60,7 @@ class RepositoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "repositoryCell", for: indexPath) as! RepositoryCell
+        cell.avatarImage.af_setImage(withURL: repositories[indexPath.row].owner.avatarUrl)
         cell.nameWithOwner.text = repositories[indexPath.row].nameWithOwner
         cell.shortDescriptionHTML.attributedText = repositories[indexPath.row].shortDescriptionHTML
         return cell

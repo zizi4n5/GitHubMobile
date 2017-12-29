@@ -1,1 +1,3 @@
 github "apollographql/apollo-ios" "0.7.0"
+github "Alamofire/Alamofire"
+github "Alamofire/AlamofireImage"

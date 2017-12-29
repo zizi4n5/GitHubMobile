@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		053075461FF67B9900489708 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053075441FF67B8F00489708 /* AlamofireImage.framework */; };
+		053075471FF67B9900489708 /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 053075441FF67B8F00489708 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		053075491FF67DF700489708 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053075481FF67DF700489708 /* Alamofire.framework */; };
+		0530754A1FF67DFE00489708 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053075481FF67DF700489708 /* Alamofire.framework */; };
+		0530754B1FF67DFE00489708 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 053075481FF67DF700489708 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0541D39B1FF3AB9A006DED14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */; };
 		0541D3A01FF3AB9A006DED14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0541D39E1FF3AB9A006DED14 /* Main.storyboard */; };
 		0541D3A21FF3AB9A006DED14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0541D3A11FF3AB9A006DED14 /* Assets.xcassets */; };
@@ -50,6 +55,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				056205DF1FF60EE80044CB85 /* Apollo.framework in Embed Frameworks */,
+				0530754B1FF67DFE00489708 /* Alamofire.framework in Embed Frameworks */,
+				053075471FF67B9900489708 /* AlamofireImage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,6 +64,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		053075441FF67B8F00489708 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		053075481FF67DF700489708 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		0541D3971FF3AB9A006DED14 /* GitHubMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0541D39F1FF3AB9A006DED14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +95,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				056205DE1FF60EE80044CB85 /* Apollo.framework in Frameworks */,
+				053075491FF67DF700489708 /* Alamofire.framework in Frameworks */,
+				053075461FF67B9900489708 /* AlamofireImage.framework in Frameworks */,
+				0530754A1FF67DFE00489708 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +197,8 @@
 			isa = PBXGroup;
 			children = (
 				056205DA1FF60ECF0044CB85 /* Apollo.framework */,
+				053075481FF67DF700489708 /* Alamofire.framework */,
+				053075441FF67B8F00489708 /* AlamofireImage.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
