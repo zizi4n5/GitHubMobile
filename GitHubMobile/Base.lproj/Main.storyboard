@@ -26,11 +26,11 @@
             </objects>
             <point key="canvasLocation" x="-1218" y="36"/>
         </scene>
-        <!--Repository Table View Controller-->
+        <!--GitHub Repository List-->
         <scene sceneID="kHW-4R-Xss">
             <objects>
                 <tableViewController id="Wl3-fW-rYT" customClass="RepositoryTableViewController" customModule="GitHubMobile" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pR3-Eb-vdP">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pR3-Eb-vdP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,7 +94,7 @@
                             <outlet property="delegate" destination="Wl3-fW-rYT" id="D0p-mf-CjM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="iAs-Au-rPs"/>
+                    <navigationItem key="navigationItem" title="GitHub Repository List" id="iAs-Au-rPs"/>
                     <connections>
                         <segue destination="eZm-vM-KXP" kind="show" identifier="OpenRepositoryDetail" id="28O-aW-ds8"/>
                     </connections>
