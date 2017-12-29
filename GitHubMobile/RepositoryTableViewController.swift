@@ -17,9 +17,15 @@ class RepositoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        refreshControl = UIRefreshControl()
         tableView.estimatedRowHeight = 64
         tableView.rowHeight = UITableViewAutomaticDimension
+        refreshControl?.addTarget(self, action: #selector(RepositoryTableViewController.refresh(sender:)), for: .valueChanged)
         
+        reloadRepositories()
+    }
+    
+    @objc func refresh(sender: UIRefreshControl) {
         reloadRepositories()
     }
     
@@ -29,6 +35,7 @@ class RepositoryTableViewController: UITableViewController {
             self.repositories.append(contentsOf: repositories)
             self.numberOfRowsInSection = self.repositories.count
             self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
         }
     }
     
