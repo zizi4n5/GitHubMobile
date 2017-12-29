@@ -4,23 +4,28 @@ query SearchRepositories($queryString: String!, $first: Int!, $after: String) {
         edges {
             node {
                 ... on Repository {
-                    name # レポジトリ名
-                    descriptionHTML # 概要のHTML
-                    languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+                    nameWithOwner # オーナー名/レポジトリ名
+                    owner {
+                        login # オーナー名
+                        avatarUrl # アバターURL
+                        __typename # "User" or "Organization"
+                    }
+                    shortDescriptionHTML # 概要のHTML
+                    repositoryTopics(first: 100) { # トピック
                         edges {
                             node {
-                                ... on Language {
-                                    name # 言語
-                                    color # GitHub上の表示色
+                                topic {
+                                    name
                                 }
                             }
                         }
                     }
+                    primaryLanguage {
+                        name # メイン開発言語
+                        color # GitHub上の表示色
+                    }
                     stargazers {
                         totalCount # スター数
-                    }
-                    forks {
-                        totalCount # フォーク数
                     }
                     url # GitHub URL
                     updatedAt # 最終更新日時

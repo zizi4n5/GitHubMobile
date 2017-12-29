@@ -4,7 +4,7 @@ import Apollo
 
 public final class SearchRepositoriesQuery: GraphQLQuery {
   public static let operationString =
-    "query SearchRepositories($queryString: String!, $first: Int!, $after: String) {\n  search(query: $queryString, type: REPOSITORY, first: $first, after: $after) {\n    __typename\n    repositoryCount\n    edges {\n      __typename\n      node {\n        __typename\n        ... on Repository {\n          name\n          descriptionHTML\n          languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {\n            __typename\n            edges {\n              __typename\n              node {\n                __typename\n                ... on Language {\n                  name\n                  color\n                }\n              }\n            }\n          }\n          stargazers {\n            __typename\n            totalCount\n          }\n          forks {\n            __typename\n            totalCount\n          }\n          url\n          updatedAt\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      __typename\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}"
+    "query SearchRepositories($queryString: String!, $first: Int!, $after: String) {\n  search(query: $queryString, type: REPOSITORY, first: $first, after: $after) {\n    __typename\n    repositoryCount\n    edges {\n      __typename\n      node {\n        __typename\n        ... on Repository {\n          nameWithOwner\n          owner {\n            __typename\n            login\n            avatarUrl\n          }\n          shortDescriptionHTML\n          repositoryTopics(first: 100) {\n            __typename\n            edges {\n              __typename\n              node {\n                __typename\n                topic {\n                  __typename\n                  name\n                }\n              }\n            }\n          }\n          primaryLanguage {\n            __typename\n            name\n            color\n          }\n          stargazers {\n            __typename\n            totalCount\n          }\n          forks {\n            __typename\n            totalCount\n          }\n          url\n          updatedAt\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      __typename\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}"
 
   public var queryString: String
   public var first: Int
@@ -192,8 +192,8 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
             return Node(snapshot: ["__typename": "MarketplaceListing"])
           }
 
-          public static func makeRepository(name: String, descriptionHtml: String, languages: AsRepository.Language? = nil, stargazers: AsRepository.Stargazer, forks: AsRepository.Fork, url: String, updatedAt: String) -> Node {
-            return Node(snapshot: ["__typename": "Repository", "name": name, "descriptionHTML": descriptionHtml, "languages": languages.flatMap { $0.snapshot }, "stargazers": stargazers.snapshot, "forks": forks.snapshot, "url": url, "updatedAt": updatedAt])
+          public static func makeRepository(nameWithOwner: String, owner: AsRepository.Owner, shortDescriptionHtml: String, repositoryTopics: AsRepository.RepositoryTopic, primaryLanguage: AsRepository.PrimaryLanguage? = nil, stargazers: AsRepository.Stargazer, forks: AsRepository.Fork, url: String, updatedAt: String) -> Node {
+            return Node(snapshot: ["__typename": "Repository", "nameWithOwner": nameWithOwner, "owner": owner.snapshot, "shortDescriptionHTML": shortDescriptionHtml, "repositoryTopics": repositoryTopics.snapshot, "primaryLanguage": primaryLanguage.flatMap { $0.snapshot }, "stargazers": stargazers.snapshot, "forks": forks.snapshot, "url": url, "updatedAt": updatedAt])
           }
 
           public var __typename: String {
@@ -221,9 +221,11 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
 
             public static let selections: [GraphQLSelection] = [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("name", type: .nonNull(.scalar(String.self))),
-              GraphQLField("descriptionHTML", type: .nonNull(.scalar(String.self))),
-              GraphQLField("languages", arguments: ["first": 10, "orderBy": ["field": "SIZE", "direction": "DESC"]], type: .object(Language.selections)),
+              GraphQLField("nameWithOwner", type: .nonNull(.scalar(String.self))),
+              GraphQLField("owner", type: .nonNull(.object(Owner.selections))),
+              GraphQLField("shortDescriptionHTML", type: .nonNull(.scalar(String.self))),
+              GraphQLField("repositoryTopics", arguments: ["first": 100], type: .nonNull(.object(RepositoryTopic.selections))),
+              GraphQLField("primaryLanguage", type: .object(PrimaryLanguage.selections)),
               GraphQLField("stargazers", type: .nonNull(.object(Stargazer.selections))),
               GraphQLField("forks", type: .nonNull(.object(Fork.selections))),
               GraphQLField("url", type: .nonNull(.scalar(String.self))),
@@ -236,8 +238,8 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
               self.snapshot = snapshot
             }
 
-            public init(name: String, descriptionHtml: String, languages: Language? = nil, stargazers: Stargazer, forks: Fork, url: String, updatedAt: String) {
-              self.init(snapshot: ["__typename": "Repository", "name": name, "descriptionHTML": descriptionHtml, "languages": languages.flatMap { $0.snapshot }, "stargazers": stargazers.snapshot, "forks": forks.snapshot, "url": url, "updatedAt": updatedAt])
+            public init(nameWithOwner: String, owner: Owner, shortDescriptionHtml: String, repositoryTopics: RepositoryTopic, primaryLanguage: PrimaryLanguage? = nil, stargazers: Stargazer, forks: Fork, url: String, updatedAt: String) {
+              self.init(snapshot: ["__typename": "Repository", "nameWithOwner": nameWithOwner, "owner": owner.snapshot, "shortDescriptionHTML": shortDescriptionHtml, "repositoryTopics": repositoryTopics.snapshot, "primaryLanguage": primaryLanguage.flatMap { $0.snapshot }, "stargazers": stargazers.snapshot, "forks": forks.snapshot, "url": url, "updatedAt": updatedAt])
             }
 
             public var __typename: String {
@@ -249,33 +251,53 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
               }
             }
 
-            /// The name of the repository.
-            public var name: String {
+            /// The repository's name with owner.
+            public var nameWithOwner: String {
               get {
-                return snapshot["name"]! as! String
+                return snapshot["nameWithOwner"]! as! String
               }
               set {
-                snapshot.updateValue(newValue, forKey: "name")
+                snapshot.updateValue(newValue, forKey: "nameWithOwner")
               }
             }
 
-            /// The description of the repository rendered to HTML.
-            public var descriptionHtml: String {
+            /// The User owner of the repository.
+            public var owner: Owner {
               get {
-                return snapshot["descriptionHTML"]! as! String
+                return Owner(snapshot: snapshot["owner"]! as! Snapshot)
               }
               set {
-                snapshot.updateValue(newValue, forKey: "descriptionHTML")
+                snapshot.updateValue(newValue.snapshot, forKey: "owner")
               }
             }
 
-            /// A list containing a breakdown of the language composition of the repository.
-            public var languages: Language? {
+            /// A description of the repository, rendered to HTML without any links in it.
+            public var shortDescriptionHtml: String {
               get {
-                return (snapshot["languages"] as? Snapshot).flatMap { Language(snapshot: $0) }
+                return snapshot["shortDescriptionHTML"]! as! String
               }
               set {
-                snapshot.updateValue(newValue?.snapshot, forKey: "languages")
+                snapshot.updateValue(newValue, forKey: "shortDescriptionHTML")
+              }
+            }
+
+            /// A list of applied repository-topic associations for this repository.
+            public var repositoryTopics: RepositoryTopic {
+              get {
+                return RepositoryTopic(snapshot: snapshot["repositoryTopics"]! as! Snapshot)
+              }
+              set {
+                snapshot.updateValue(newValue.snapshot, forKey: "repositoryTopics")
+              }
+            }
+
+            /// The primary language of the repository's code.
+            public var primaryLanguage: PrimaryLanguage? {
+              get {
+                return (snapshot["primaryLanguage"] as? Snapshot).flatMap { PrimaryLanguage(snapshot: $0) }
+              }
+              set {
+                snapshot.updateValue(newValue?.snapshot, forKey: "primaryLanguage")
               }
             }
 
@@ -320,8 +342,61 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
               }
             }
 
-            public struct Language: GraphQLSelectionSet {
-              public static let possibleTypes = ["LanguageConnection"]
+            public struct Owner: GraphQLSelectionSet {
+              public static let possibleTypes = ["Organization", "User"]
+
+              public static let selections: [GraphQLSelection] = [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("login", type: .nonNull(.scalar(String.self))),
+                GraphQLField("avatarUrl", type: .nonNull(.scalar(String.self))),
+              ]
+
+              public var snapshot: Snapshot
+
+              public init(snapshot: Snapshot) {
+                self.snapshot = snapshot
+              }
+
+              public static func makeOrganization(login: String, avatarUrl: String) -> Owner {
+                return Owner(snapshot: ["__typename": "Organization", "login": login, "avatarUrl": avatarUrl])
+              }
+
+              public static func makeUser(login: String, avatarUrl: String) -> Owner {
+                return Owner(snapshot: ["__typename": "User", "login": login, "avatarUrl": avatarUrl])
+              }
+
+              public var __typename: String {
+                get {
+                  return snapshot["__typename"]! as! String
+                }
+                set {
+                  snapshot.updateValue(newValue, forKey: "__typename")
+                }
+              }
+
+              /// The username used to login.
+              public var login: String {
+                get {
+                  return snapshot["login"]! as! String
+                }
+                set {
+                  snapshot.updateValue(newValue, forKey: "login")
+                }
+              }
+
+              /// A URL pointing to the owner's public avatar.
+              public var avatarUrl: String {
+                get {
+                  return snapshot["avatarUrl"]! as! String
+                }
+                set {
+                  snapshot.updateValue(newValue, forKey: "avatarUrl")
+                }
+              }
+            }
+
+            public struct RepositoryTopic: GraphQLSelectionSet {
+              public static let possibleTypes = ["RepositoryTopicConnection"]
 
               public static let selections: [GraphQLSelection] = [
                 GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -335,7 +410,7 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
               }
 
               public init(edges: [Edge?]? = nil) {
-                self.init(snapshot: ["__typename": "LanguageConnection", "edges": edges.flatMap { $0.map { $0.flatMap { $0.snapshot } } }])
+                self.init(snapshot: ["__typename": "RepositoryTopicConnection", "edges": edges.flatMap { $0.map { $0.flatMap { $0.snapshot } } }])
               }
 
               public var __typename: String {
@@ -358,11 +433,11 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
               }
 
               public struct Edge: GraphQLSelectionSet {
-                public static let possibleTypes = ["LanguageEdge"]
+                public static let possibleTypes = ["RepositoryTopicEdge"]
 
                 public static let selections: [GraphQLSelection] = [
                   GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-                  GraphQLField("node", type: .nonNull(.object(Node.selections))),
+                  GraphQLField("node", type: .object(Node.selections)),
                 ]
 
                 public var snapshot: Snapshot
@@ -371,8 +446,8 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
                   self.snapshot = snapshot
                 }
 
-                public init(node: Node) {
-                  self.init(snapshot: ["__typename": "LanguageEdge", "node": node.snapshot])
+                public init(node: Node? = nil) {
+                  self.init(snapshot: ["__typename": "RepositoryTopicEdge", "node": node.flatMap { $0.snapshot }])
                 }
 
                 public var __typename: String {
@@ -384,22 +459,22 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
                   }
                 }
 
-                public var node: Node {
+                /// The item at the end of the edge.
+                public var node: Node? {
                   get {
-                    return Node(snapshot: snapshot["node"]! as! Snapshot)
+                    return (snapshot["node"] as? Snapshot).flatMap { Node(snapshot: $0) }
                   }
                   set {
-                    snapshot.updateValue(newValue.snapshot, forKey: "node")
+                    snapshot.updateValue(newValue?.snapshot, forKey: "node")
                   }
                 }
 
                 public struct Node: GraphQLSelectionSet {
-                  public static let possibleTypes = ["Language"]
+                  public static let possibleTypes = ["RepositoryTopic"]
 
                   public static let selections: [GraphQLSelection] = [
                     GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-                    GraphQLField("name", type: .nonNull(.scalar(String.self))),
-                    GraphQLField("color", type: .scalar(String.self)),
+                    GraphQLField("topic", type: .nonNull(.object(Topic.selections))),
                   ]
 
                   public var snapshot: Snapshot
@@ -408,8 +483,8 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
                     self.snapshot = snapshot
                   }
 
-                  public init(name: String, color: String? = nil) {
-                    self.init(snapshot: ["__typename": "Language", "name": name, "color": color])
+                  public init(topic: Topic) {
+                    self.init(snapshot: ["__typename": "RepositoryTopic", "topic": topic.snapshot])
                   }
 
                   public var __typename: String {
@@ -421,25 +496,102 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
                     }
                   }
 
-                  /// The name of the current language.
-                  public var name: String {
+                  /// The topic.
+                  public var topic: Topic {
                     get {
-                      return snapshot["name"]! as! String
+                      return Topic(snapshot: snapshot["topic"]! as! Snapshot)
                     }
                     set {
-                      snapshot.updateValue(newValue, forKey: "name")
+                      snapshot.updateValue(newValue.snapshot, forKey: "topic")
                     }
                   }
 
-                  /// The color defined for the current language.
-                  public var color: String? {
-                    get {
-                      return snapshot["color"] as? String
+                  public struct Topic: GraphQLSelectionSet {
+                    public static let possibleTypes = ["Topic"]
+
+                    public static let selections: [GraphQLSelection] = [
+                      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                      GraphQLField("name", type: .nonNull(.scalar(String.self))),
+                    ]
+
+                    public var snapshot: Snapshot
+
+                    public init(snapshot: Snapshot) {
+                      self.snapshot = snapshot
                     }
-                    set {
-                      snapshot.updateValue(newValue, forKey: "color")
+
+                    public init(name: String) {
+                      self.init(snapshot: ["__typename": "Topic", "name": name])
+                    }
+
+                    public var __typename: String {
+                      get {
+                        return snapshot["__typename"]! as! String
+                      }
+                      set {
+                        snapshot.updateValue(newValue, forKey: "__typename")
+                      }
+                    }
+
+                    /// The topic's name.
+                    public var name: String {
+                      get {
+                        return snapshot["name"]! as! String
+                      }
+                      set {
+                        snapshot.updateValue(newValue, forKey: "name")
+                      }
                     }
                   }
+                }
+              }
+            }
+
+            public struct PrimaryLanguage: GraphQLSelectionSet {
+              public static let possibleTypes = ["Language"]
+
+              public static let selections: [GraphQLSelection] = [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("name", type: .nonNull(.scalar(String.self))),
+                GraphQLField("color", type: .scalar(String.self)),
+              ]
+
+              public var snapshot: Snapshot
+
+              public init(snapshot: Snapshot) {
+                self.snapshot = snapshot
+              }
+
+              public init(name: String, color: String? = nil) {
+                self.init(snapshot: ["__typename": "Language", "name": name, "color": color])
+              }
+
+              public var __typename: String {
+                get {
+                  return snapshot["__typename"]! as! String
+                }
+                set {
+                  snapshot.updateValue(newValue, forKey: "__typename")
+                }
+              }
+
+              /// The name of the current language.
+              public var name: String {
+                get {
+                  return snapshot["name"]! as! String
+                }
+                set {
+                  snapshot.updateValue(newValue, forKey: "name")
+                }
+              }
+
+              /// The color defined for the current language.
+              public var color: String? {
+                get {
+                  return snapshot["color"] as? String
+                }
+                set {
+                  snapshot.updateValue(newValue, forKey: "color")
                 }
               }
             }

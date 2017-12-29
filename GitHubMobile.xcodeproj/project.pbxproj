@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0541D39B1FF3AB9A006DED14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */; };
-		0541D39D1FF3AB9A006DED14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541D39C1FF3AB9A006DED14 /* ViewController.swift */; };
 		0541D3A01FF3AB9A006DED14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0541D39E1FF3AB9A006DED14 /* Main.storyboard */; };
 		0541D3A21FF3AB9A006DED14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0541D3A11FF3AB9A006DED14 /* Assets.xcassets */; };
 		0541D3A51FF3AB9A006DED14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0541D3A31FF3AB9A006DED14 /* LaunchScreen.storyboard */; };
@@ -18,6 +17,11 @@
 		0541D3D21FF3BF6B006DED14 /* GitHubGraphQLAPI.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0541D3D11FF3BF6B006DED14 /* GitHubGraphQLAPI.graphql */; };
 		056205DE1FF60EE80044CB85 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056205DA1FF60ECF0044CB85 /* Apollo.framework */; };
 		056205DF1FF60EE80044CB85 /* Apollo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 056205DA1FF60ECF0044CB85 /* Apollo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		056205E31FF62B510044CB85 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056205E11FF62B510044CB85 /* RepositoryCell.swift */; };
+		056205E61FF6329E0044CB85 /* RepositoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */; };
+		056205E81FF64D2F0044CB85 /* GitHubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056205E71FF64D2F0044CB85 /* GitHubRepository.swift */; };
+		056205EA1FF655CB0044CB85 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056205E91FF655CB0044CB85 /* UIColor+Extension.swift */; };
+		056205EC1FF65ACE0044CB85 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056205EB1FF65ACE0044CB85 /* String+Extension.swift */; };
 		05D975831FF4F0DF00616E07 /* GitHubGraphQLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D975821FF4F0DF00616E07 /* GitHubGraphQLAPI.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +59,6 @@
 /* Begin PBXFileReference section */
 		0541D3971FF3AB9A006DED14 /* GitHubMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0541D39C1FF3AB9A006DED14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0541D39F1FF3AB9A006DED14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0541D3A11FF3AB9A006DED14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0541D3A41FF3AB9A006DED14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -69,6 +72,11 @@
 		0541D3C81FF3AF62006DED14 /* GitHubClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubClient.swift; sourceTree = "<group>"; };
 		0541D3D11FF3BF6B006DED14 /* GitHubGraphQLAPI.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GitHubGraphQLAPI.graphql; sourceTree = "<group>"; };
 		056205DA1FF60ECF0044CB85 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
+		056205E11FF62B510044CB85 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
+		056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewController.swift; sourceTree = "<group>"; };
+		056205E71FF64D2F0044CB85 /* GitHubRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepository.swift; sourceTree = "<group>"; };
+		056205E91FF655CB0044CB85 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		056205EB1FF65ACE0044CB85 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		05D975821FF4F0DF00616E07 /* GitHubGraphQLAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubGraphQLAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,15 +130,15 @@
 		0541D3991FF3AB9A006DED14 /* GitHubMobile */ = {
 			isa = PBXGroup;
 			children = (
-				0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */,
-				0541D3C81FF3AF62006DED14 /* GitHubClient.swift */,
-				0541D3D11FF3BF6B006DED14 /* GitHubGraphQLAPI.graphql */,
-				05D975821FF4F0DF00616E07 /* GitHubGraphQLAPI.swift */,
-				0541D39C1FF3AB9A006DED14 /* ViewController.swift */,
-				0541D39E1FF3AB9A006DED14 /* Main.storyboard */,
-				0541D3A11FF3AB9A006DED14 /* Assets.xcassets */,
 				0541D3A31FF3AB9A006DED14 /* LaunchScreen.storyboard */,
+				0541D39E1FF3AB9A006DED14 /* Main.storyboard */,
+				0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */,
+				056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */,
+				056205E11FF62B510044CB85 /* RepositoryCell.swift */,
+				0541D3A11FF3AB9A006DED14 /* Assets.xcassets */,
 				0541D3A61FF3AB9A006DED14 /* Info.plist */,
+				056205ED1FF670650044CB85 /* GitHubClient */,
+				056205EE1FF670650044CB85 /* Extensions */,
 			);
 			path = GitHubMobile;
 			sourceTree = "<group>";
@@ -151,6 +159,26 @@
 				0541D3BC1FF3AB9A006DED14 /* Info.plist */,
 			);
 			path = GitHubMobileUITests;
+			sourceTree = "<group>";
+		};
+		056205ED1FF670650044CB85 /* GitHubClient */ = {
+			isa = PBXGroup;
+			children = (
+				0541D3C81FF3AF62006DED14 /* GitHubClient.swift */,
+				056205E71FF64D2F0044CB85 /* GitHubRepository.swift */,
+				0541D3D11FF3BF6B006DED14 /* GitHubGraphQLAPI.graphql */,
+				05D975821FF4F0DF00616E07 /* GitHubGraphQLAPI.swift */,
+			);
+			path = GitHubClient;
+			sourceTree = "<group>";
+		};
+		056205EE1FF670650044CB85 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				056205EB1FF65ACE0044CB85 /* String+Extension.swift */,
+				056205E91FF655CB0044CB85 /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		05D975851FF60E3600616E07 /* Frameworks */ = {
@@ -298,9 +326,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0541D3C91FF3AF62006DED14 /* GitHubClient.swift in Sources */,
+				056205EC1FF65ACE0044CB85 /* String+Extension.swift in Sources */,
 				05D975831FF4F0DF00616E07 /* GitHubGraphQLAPI.swift in Sources */,
-				0541D39D1FF3AB9A006DED14 /* ViewController.swift in Sources */,
+				056205E61FF6329E0044CB85 /* RepositoryTableViewController.swift in Sources */,
+				056205E31FF62B510044CB85 /* RepositoryCell.swift in Sources */,
+				056205E81FF64D2F0044CB85 /* GitHubRepository.swift in Sources */,
 				0541D39B1FF3AB9A006DED14 /* AppDelegate.swift in Sources */,
+				056205EA1FF655CB0044CB85 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
