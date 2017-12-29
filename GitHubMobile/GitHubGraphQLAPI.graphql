@@ -1,0 +1,38 @@
+query SearchRepositories($queryString: String!, $first: Int!, $after: String) {
+    search(query: $queryString, type: REPOSITORY, first: $first after: $after) {
+        repositoryCount #　レポジトリ数
+        edges {
+            node {
+                ... on Repository {
+                    name # レポジトリ名
+                    descriptionHTML # 概要のHTML
+                    languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+                        edges {
+                            node {
+                                ... on Language {
+                                    name # 言語
+                                    color # GitHub上の表示色
+                                }
+                            }
+                        }
+                    }
+                    stargazers {
+                        totalCount # スター数
+                    }
+                    forks {
+                        totalCount # フォーク数
+                    }
+                    url # GitHub URL
+                    updatedAt # 最終更新日時
+                }
+            }
+            cursor # ページ位置
+        }
+        pageInfo { # ページ情報
+            endCursor # ページ終了位置
+            hasNextPage # 次ページの有無
+            hasPreviousPage  # 前ページの有無
+            startCursor # ページ開始位置
+        }
+    }
+}
