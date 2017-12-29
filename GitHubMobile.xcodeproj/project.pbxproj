@@ -14,6 +14,7 @@
 		0541D3A51FF3AB9A006DED14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0541D3A31FF3AB9A006DED14 /* LaunchScreen.storyboard */; };
 		0541D3B01FF3AB9A006DED14 /* GitHubMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541D3AF1FF3AB9A006DED14 /* GitHubMobileTests.swift */; };
 		0541D3BB1FF3AB9A006DED14 /* GitHubMobileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541D3BA1FF3AB9A006DED14 /* GitHubMobileUITests.swift */; };
+		0541D3C91FF3AF62006DED14 /* GitHubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541D3C81FF3AF62006DED14 /* GitHubClient.swift */; };
 		0541D3D21FF3BF6B006DED14 /* GitHubGraphQLAPI.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0541D3D11FF3BF6B006DED14 /* GitHubGraphQLAPI.graphql */; };
 		056205DE1FF60EE80044CB85 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056205DA1FF60ECF0044CB85 /* Apollo.framework */; };
 		056205DF1FF60EE80044CB85 /* Apollo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 056205DA1FF60ECF0044CB85 /* Apollo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -65,6 +66,7 @@
 		0541D3B61FF3AB9A006DED14 /* GitHubMobileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubMobileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0541D3BA1FF3AB9A006DED14 /* GitHubMobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubMobileUITests.swift; sourceTree = "<group>"; };
 		0541D3BC1FF3AB9A006DED14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0541D3C81FF3AF62006DED14 /* GitHubClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubClient.swift; sourceTree = "<group>"; };
 		0541D3D11FF3BF6B006DED14 /* GitHubGraphQLAPI.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GitHubGraphQLAPI.graphql; sourceTree = "<group>"; };
 		056205DA1FF60ECF0044CB85 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
 		05D975821FF4F0DF00616E07 /* GitHubGraphQLAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubGraphQLAPI.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */,
+				0541D3C81FF3AF62006DED14 /* GitHubClient.swift */,
 				0541D3D11FF3BF6B006DED14 /* GitHubGraphQLAPI.graphql */,
 				05D975821FF4F0DF00616E07 /* GitHubGraphQLAPI.swift */,
 				0541D39C1FF3AB9A006DED14 /* ViewController.swift */,
@@ -294,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0541D3C91FF3AF62006DED14 /* GitHubClient.swift in Sources */,
 				05D975831FF4F0DF00616E07 /* GitHubGraphQLAPI.swift in Sources */,
 				0541D39D1FF3AB9A006DED14 /* ViewController.swift in Sources */,
 				0541D39B1FF3AB9A006DED14 /* AppDelegate.swift in Sources */,
