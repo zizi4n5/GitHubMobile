@@ -21,7 +21,6 @@ class RepositoryTableViewController: UITableViewController {
         super.viewDidLoad()
         repositories = [GitHubRepository](repeating: GitHubRepository(), count: firstPageSize)
 
-        refreshControl = UIRefreshControl()
         tableView.estimatedRowHeight = 64
         tableView.rowHeight = UITableViewAutomaticDimension
         refreshControl?.addTarget(self, action: #selector(RepositoryTableViewController.refresh(sender:)), for: .valueChanged)

@@ -100,6 +100,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="GitHub Repository List" id="iAs-Au-rPs"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="0Sl-LN-PtW">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                     <connections>
                         <segue destination="eZm-vM-KXP" kind="show" identifier="OpenRepositoryDetail" id="28O-aW-ds8"/>
                     </connections>
