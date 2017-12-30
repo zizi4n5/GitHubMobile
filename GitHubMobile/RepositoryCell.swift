@@ -17,6 +17,9 @@ class RepositoryCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        avatarImage.isSkeletonable = true
+        nameWithOwner.isSkeletonable = true
+        shortDescriptionHTML.isSkeletonable = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

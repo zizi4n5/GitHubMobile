@@ -13,6 +13,7 @@ import UIKit
 public class GitHubClient {
     
     let apollo: ApolloClient
+    public var isLoading = false
 
     static let `default` = GitHubClient(token: "f8cf3573a35ce4807a525348215c72d3a29e3bbe")
     
@@ -24,23 +25,27 @@ public class GitHubClient {
         let url = URL(string: "https://api.github.com/graphql")!
         apollo = ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
     }
-    
-    public func getRepositories(first: Int, after: String? = nil, resultHandler: @escaping (([GitHubRepository], Error?) -> Swift.Void)) {
-        
+
+    public func getRepositories(first: Int, after: GitHubRepository? = nil, resultHandler: @escaping ((Int, [GitHubRepository], Error?) -> Swift.Void)) {
+        isLoading = true
         let queryString = "language:Swift sort:stars-desc" // 昇順
         
 //        apollo.fetch(query: SearchRepositoriesQuery(queryString: queryString, first: first, after: after)) { (result, error) in
-        apollo.fetch(query: SearchRepositoriesQuery(queryString: queryString, first: first, after: after), cachePolicy: .fetchIgnoringCacheData) { (result, error) in
+        apollo.fetch(query: SearchRepositoriesQuery(queryString: queryString, first: first, after: after?.cursor), cachePolicy: .fetchIgnoringCacheData) { (result, error) in
+            
+            defer {
+                self.isLoading = false
+            }
         
             var repositories = [GitHubRepository]()
             
             if let error = error {
                 print("Error: \(error)");
-                return resultHandler(repositories, error)
+                return resultHandler(0, repositories, error)
             }
             
-            guard let edges = result?.data?.search.edges else {
-                return resultHandler(repositories, nil)
+            guard let totalCount = result?.data?.search.repositoryCount, let edges = result?.data?.search.edges else {
+                return resultHandler(0, repositories, nil)
             }
 
             for edge in edges {
@@ -70,7 +75,7 @@ public class GitHubClient {
                 repositories.append(repository)
             }
             
-            return resultHandler(repositories, nil)
+            return resultHandler(totalCount, repositories, nil)
         }
     }
 }
