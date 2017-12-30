@@ -13,6 +13,7 @@ class RepositoryCell: UITableViewCell {
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var nameWithOwner: UILabel!
     @IBOutlet weak var shortDescriptionHTML: UILabel!
+    @IBOutlet weak var stars: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +21,7 @@ class RepositoryCell: UITableViewCell {
         avatarImage.isSkeletonable = true
         nameWithOwner.isSkeletonable = true
         shortDescriptionHTML.isSkeletonable = true
+        stars.isSkeletonable = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

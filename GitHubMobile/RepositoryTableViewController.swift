@@ -105,13 +105,19 @@ class RepositoryTableViewController: UITableViewController {
             loadRepositories(first: nextPageSize, after: repositories.last)
         }
         
-        if let _ = repositories[indexPath.row].url {
+        let repository = repositories[indexPath.row]
+        if let _ = repository.url {
             cell.hideSkeleton()
-            UIView.animate(withDuration: 3.0) {
-                cell.avatarImage.image = nil
-                cell.avatarImage.af_setImage(withURL: self.repositories[indexPath.row].owner.avatarUrl)
-                cell.nameWithOwner.text = self.repositories[indexPath.row].nameWithOwner
-                cell.shortDescriptionHTML.attributedText = self.repositories[indexPath.row].shortDescriptionHTML
+            cell.avatarImage.image = nil
+            cell.avatarImage.af_setImage(withURL: repository.owner.avatarUrl)
+            cell.nameWithOwner.text = repository.nameWithOwner
+            cell.shortDescriptionHTML.attributedText = repository.shortDescriptionHTML
+            switch repository.stargazersTotalCount {
+            case 0..<1000:
+                cell.stars.text = "★ \(repository.stargazersTotalCount)"
+            default:
+                cell.stars.text = "★ \(String(format: "%.1f", Float(repository.stargazersTotalCount) / 1000))k"
+                break
             }
         } else {
             let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .bottomRightTopLeft)
