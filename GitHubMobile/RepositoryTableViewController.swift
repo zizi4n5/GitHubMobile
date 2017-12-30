@@ -41,10 +41,19 @@ class RepositoryTableViewController: UITableViewController {
                 print("Error: \(error)");
                 return
             }
-            
+
+            // 追加データ読込の場合
             if let _ = after {
+                // 追加データが存在しない場合は何もしない
+                if repositories.count == 0 {
+                    return
+                }
+                
                 self.repositories.append(contentsOf: repositories)
-            } else {
+                
+            }
+            // refreshまたは初回読込の場合
+            else {
                 // スターでのsortを指定しているにも関わらず、稀に正しくソートされていない結果が返却されてくる場合がある。
                 // 本現象はGitHubが提供しているGraphQL Explorer(https://developer.github.com/v4/explorer/)でも再現確認できたため、
                 // GitHubのgraphQL API のバグの可能性あり。
@@ -57,10 +66,10 @@ class RepositoryTableViewController: UITableViewController {
                 }
                 
                 self.repositories = repositories
+                self.refreshControl?.endRefreshing()
             }
             
             self.tableView.reloadData()
-            self.refreshControl?.endRefreshing()
         }
     }
     
