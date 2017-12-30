@@ -28,8 +28,10 @@ public class GitHubClient {
     public func getRepositories(first: Int, after: String? = nil, resultHandler: @escaping (([GitHubRepository], Error?) -> Swift.Void)) {
         
         let queryString = "language:Swift sort:stars-desc" // 昇順
-        apollo.fetch(query: SearchRepositoriesQuery(queryString: queryString, first: first, after: after)) { (result, error) in
-            
+        
+//        apollo.fetch(query: SearchRepositoriesQuery(queryString: queryString, first: first, after: after)) { (result, error) in
+        apollo.fetch(query: SearchRepositoriesQuery(queryString: queryString, first: first, after: after), cachePolicy: .fetchIgnoringCacheData) { (result, error) in
+        
             var repositories = [GitHubRepository]()
             
             if let error = error {

@@ -34,6 +34,18 @@ class RepositoryTableViewController: UITableViewController {
             self.repositories.removeAll()
             self.repositories.append(contentsOf: repositories)
             self.numberOfRowsInSection = self.repositories.count
+        GitHubClient.default.getRepositories(first: 10)  { (repositories, error) in
+            
+            // スターでのsortを指定しているにも関わらず、稀に正しくソートされていない結果が返却されてくる場合がある。
+            // 本現象はGitHubが提供しているGraphQL Explorer(https://developer.github.com/v4/explorer/)でも再現確認できたため、
+            // GitHubのgraphQL API のバグの可能性あり。
+            // このため、暫定的に以下の対応を実施。
+            //  1. 取得した値の1番目がダントツ１位のAlamofireかチェックして異なる場合はリトライを行う
+            //  2. GitHubClient.getRepositoriesでCacheを利用しないように設定を変更
+            guard repositories[0].nameWithOwner == "Alamofire/Alamofire" else {
+                self.reloadRepositories()
+                return
+            }
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
         }
