@@ -121,8 +121,18 @@ class RepositoryTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if let _ = repositories[indexPath.row].url {
+            return indexPath
+        } else {
+            return nil
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "OpenRepositoryDetail", sender: repositories[indexPath.row].url)
+        if let url = repositories[indexPath.row].url {
+            performSegue(withIdentifier: "OpenRepositoryDetail", sender: url)
+        }
     }
     
     // MARK: - Navigation
@@ -132,5 +142,4 @@ class RepositoryTableViewController: UITableViewController {
             detailVC.url = url
         }
     }
-
 }
