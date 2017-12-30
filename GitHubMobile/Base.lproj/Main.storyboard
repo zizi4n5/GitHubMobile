@@ -51,7 +51,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Name With Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CW-Rc-7H1">
-                                            <rect key="frame" x="69" y="10" width="252" height="20"/>
+                                            <rect key="frame" x="69" y="10" width="140" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18.5" id="03w-Og-liy"/>
                                             </constraints>
@@ -60,7 +60,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKE-Uy-Us6">
-                                            <rect key="frame" x="69" y="35" width="252" height="21"/>
+                                            <rect key="frame" x="69" y="35" width="180.5" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20.5" id="Djq-vj-6iz"/>
                                             </constraints>
@@ -89,14 +89,13 @@
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5CW-Rc-7H1" secondAttribute="trailing" constant="20" id="EtE-Yk-QfI"/>
                                         <constraint firstItem="y7y-3E-Wd5" firstAttribute="leading" secondItem="TKE-Uy-Us6" secondAttribute="leading" id="J7x-pd-NUY"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y7y-3E-Wd5" secondAttribute="trailing" constant="20" symbolic="YES" id="KOU-6n-1IB"/>
-                                        <constraint firstAttribute="trailing" secondItem="TKE-Uy-Us6" secondAttribute="trailing" constant="20" id="Knf-qv-rUG"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TKE-Uy-Us6" secondAttribute="trailing" constant="20" id="Knf-qv-rUG"/>
                                         <constraint firstItem="vnB-2h-mmW" firstAttribute="leading" secondItem="O53-6d-FvJ" secondAttribute="leading" constant="10" id="MFi-rA-oj1"/>
                                         <constraint firstItem="TKE-Uy-Us6" firstAttribute="top" secondItem="5CW-Rc-7H1" secondAttribute="bottom" constant="5" id="MG1-k5-4NQ"/>
                                         <constraint firstItem="TKE-Uy-Us6" firstAttribute="leading" secondItem="vnB-2h-mmW" secondAttribute="trailing" constant="15" id="P1i-NA-FLL"/>
                                         <constraint firstItem="5CW-Rc-7H1" firstAttribute="top" secondItem="O53-6d-FvJ" secondAttribute="top" constant="10" id="dYm-Ix-es2"/>
                                         <constraint firstItem="TKE-Uy-Us6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5CW-Rc-7H1" secondAttribute="leading" id="eNQ-eo-fdH"/>
                                         <constraint firstItem="y7y-3E-Wd5" firstAttribute="top" secondItem="TKE-Uy-Us6" secondAttribute="bottom" constant="2.5" id="fca-5c-JLM"/>
-                                        <constraint firstItem="TKE-Uy-Us6" firstAttribute="width" secondItem="5CW-Rc-7H1" secondAttribute="width" id="foJ-Ph-cdn"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="y7y-3E-Wd5" secondAttribute="bottom" constant="0.5" id="ms3-dw-TpU"/>
                                         <constraint firstItem="5CW-Rc-7H1" firstAttribute="leading" secondItem="vnB-2h-mmW" secondAttribute="trailing" constant="15" id="yX1-zv-cwz"/>
                                     </constraints>
