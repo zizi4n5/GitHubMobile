@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P2J-qu-gfO">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,13 +10,18 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="65S-QH-fZa">
             <objects>
                 <navigationController id="P2J-qu-gfO" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8rq-92-xW7">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -32,7 +37,7 @@
             <objects>
                 <tableViewController id="Wl3-fW-rYT" customClass="RepositoryTableViewController" customModule="GitHubMobile" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pR3-Eb-vdP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -40,7 +45,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="juE-tp-4P2" id="O53-6d-FvJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="83.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="83.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vnB-2h-mmW">
@@ -60,7 +65,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKE-Uy-Us6">
-                                            <rect key="frame" x="69" y="35" width="180.5" height="21"/>
+                                            <rect key="frame" x="68.999999999999986" y="35" width="180.66666666666663" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20.5" id="Djq-vj-6iz"/>
                                             </constraints>
@@ -115,7 +120,6 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="iAs-Au-rPs"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="0Sl-LN-PtW">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -133,30 +137,108 @@
             <objects>
                 <viewController id="eZm-vM-KXP" customClass="RepositoryDetailViewController" customModule="GitHubMobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9oO-ob-5mB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t4E-6r-dSC">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="J7n-IL-gpT">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xhd-2a-yin" userLabel="Skeleton Header View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="85" id="DIa-0c-aJc"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4po-PC-Zz3" customClass="SkeletonLabel" customModule="GitHubMobile" customModuleProvider="target">
+                                        <rect key="frame" x="49" y="105" width="280" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Label1
+Label2</string>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZJ-3u-gLS" customClass="SkeletonLabel" customModule="GitHubMobile" customModuleProvider="target">
+                                        <rect key="frame" x="49" y="175" width="280" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Label1
+Label2
+Label3</string>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THp-5J-VVL" customClass="SkeletonLabel" customModule="GitHubMobile" customModuleProvider="target">
+                                        <rect key="frame" x="49" y="265" width="280" height="125"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Label1
+Label2
+Label3
+Label4
+Label5</string>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGF-85-bgu" customClass="SkeletonLabel" customModule="GitHubMobile" customModuleProvider="target">
+                                        <rect key="frame" x="49" y="410" width="280" height="125"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Label1
+Label2
+Label3
+Label4
+Label5</string>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IqT-aJ-oMQ" customClass="SkeletonLabel" customModule="GitHubMobile" customModuleProvider="target">
+                                        <rect key="frame" x="49" y="555" width="280" height="125"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Label1
+Label2
+Label3
+Label4
+Label5</string>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Xhd-2a-yin" secondAttribute="trailing" id="CZc-ov-NKM"/>
+                                    <constraint firstItem="Xhd-2a-yin" firstAttribute="top" secondItem="J7n-IL-gpT" secondAttribute="top" id="bxX-eK-wtF"/>
+                                    <constraint firstItem="Xhd-2a-yin" firstAttribute="leading" secondItem="J7n-IL-gpT" secondAttribute="leading" id="cCx-Gk-YMd"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="t4E-6r-dSC" firstAttribute="leading" secondItem="05t-BK-EIx" secondAttribute="leading" id="F5D-CD-QdR"/>
-                            <constraint firstItem="t4E-6r-dSC" firstAttribute="trailing" secondItem="05t-BK-EIx" secondAttribute="trailing" id="G4d-YW-HQn"/>
-                            <constraint firstItem="t4E-6r-dSC" firstAttribute="top" secondItem="05t-BK-EIx" secondAttribute="top" constant="-64" id="WTm-HR-3BX"/>
-                            <constraint firstItem="t4E-6r-dSC" firstAttribute="bottom" secondItem="05t-BK-EIx" secondAttribute="bottom" id="dMB-vF-2rA"/>
+                            <constraint firstItem="J7n-IL-gpT" firstAttribute="top" secondItem="05t-BK-EIx" secondAttribute="top" id="5KI-b0-roP"/>
+                            <constraint firstAttribute="trailing" secondItem="t4E-6r-dSC" secondAttribute="trailing" id="908-Fu-crh"/>
+                            <constraint firstItem="t4E-6r-dSC" firstAttribute="leading" secondItem="9oO-ob-5mB" secondAttribute="leading" id="Nkp-Lh-9oK"/>
+                            <constraint firstItem="J7n-IL-gpT" firstAttribute="bottom" secondItem="05t-BK-EIx" secondAttribute="bottom" id="UED-Np-oaa"/>
+                            <constraint firstAttribute="trailing" secondItem="J7n-IL-gpT" secondAttribute="trailing" id="glg-6G-Shl"/>
+                            <constraint firstItem="t4E-6r-dSC" firstAttribute="bottom" secondItem="05t-BK-EIx" secondAttribute="bottom" id="sHk-42-A0n"/>
+                            <constraint firstItem="J7n-IL-gpT" firstAttribute="leading" secondItem="9oO-ob-5mB" secondAttribute="leading" id="vYo-vw-bsj"/>
+                            <constraint firstItem="t4E-6r-dSC" firstAttribute="top" secondItem="05t-BK-EIx" secondAttribute="top" id="xPw-Do-kTu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="05t-BK-EIx"/>
                     </view>
                     <connections>
+                        <outlet property="skeletonView" destination="J7n-IL-gpT" id="DkP-Hc-seL"/>
                         <outlet property="webview" destination="t4E-6r-dSC" id="E7N-aZ-tAw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zah-CY-R8A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="448.80000000000001" y="35.532233883058474"/>
+            <point key="canvasLocation" x="448.80000000000001" y="35.467980295566505"/>
         </scene>
     </scenes>
 </document>
