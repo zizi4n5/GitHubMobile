@@ -9,6 +9,7 @@
 import UIKit
 import GitHubClient
 import AlamofireImage
+import FDFullscreenPopGesture
 
 class RepositoryTableViewController: UITableViewController {
 
@@ -21,6 +22,7 @@ class RepositoryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.fd_fullscreenPopGestureRecognizer.isEnabled = true
         setNavigationBarTitle()
         
         repositories = [GitHubRepository](repeating: GitHubRepository(), count: firstPageSize)

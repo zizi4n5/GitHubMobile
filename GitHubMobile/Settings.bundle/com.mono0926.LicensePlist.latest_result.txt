@@ -1,3 +1,7 @@
+name: FDFullscreenPopGesture, nameSpecified: 
+body: The MIT License (MIT…
+version: 1.1
+
 name: LicensePlist, nameSpecified: License Plist, owner: mono0926, version: 1.8.2
 
 name: HtmlLabel, nameSpecified: Html Label, owner: saku, version: 

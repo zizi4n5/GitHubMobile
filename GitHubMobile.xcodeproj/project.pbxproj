@@ -30,6 +30,7 @@
 		054D105E1FF8EA1100F01B45 /* SkeletonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054D105D1FF8EA1100F01B45 /* SkeletonLabel.swift */; };
 		056205E31FF62B510044CB85 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056205E11FF62B510044CB85 /* RepositoryCell.swift */; };
 		056205E61FF6329E0044CB85 /* RepositoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */; };
+		1FADD64A73BB6470BC0A2581 /* Pods_GitHubMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A144CE86DAB16C15319AE0C /* Pods_GitHubMobile.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,9 @@
 		056205DA1FF60ECF0044CB85 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
 		056205E11FF62B510044CB85 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewController.swift; sourceTree = "<group>"; };
+		1AE25C49D2BEE304D3551EC2 /* Pods-GitHubMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubMobile/Pods-GitHubMobile.release.xcconfig"; sourceTree = "<group>"; };
+		8A144CE86DAB16C15319AE0C /* Pods_GitHubMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FA39E4626DF1D614F250E65 /* Pods-GitHubMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubMobile/Pods-GitHubMobile.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,7 @@
 				053075461FF67B9900489708 /* AlamofireImage.framework in Frameworks */,
 				052F4CF01FF8CD52009D8C66 /* Apollo.framework in Frameworks */,
 				0530754F1FF70BF700489708 /* SkeletonView.framework in Frameworks */,
+				1FADD64A73BB6470BC0A2581 /* Pods_GitHubMobile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +138,7 @@
 				0541D3B91FF3AB9A006DED14 /* GitHubMobileUITests */,
 				05D975851FF60E3600616E07 /* Frameworks */,
 				0541D3981FF3AB9A006DED14 /* Products */,
+				82768204D37D567D67519905 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -190,8 +196,18 @@
 				053075481FF67DF700489708 /* Alamofire.framework */,
 				053075441FF67B8F00489708 /* AlamofireImage.framework */,
 				0530754E1FF70BF700489708 /* SkeletonView.framework */,
+				8A144CE86DAB16C15319AE0C /* Pods_GitHubMobile.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		82768204D37D567D67519905 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8FA39E4626DF1D614F250E65 /* Pods-GitHubMobile.debug.xcconfig */,
+				1AE25C49D2BEE304D3551EC2 /* Pods-GitHubMobile.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,11 +217,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0541D3BF1FF3AB9A006DED14 /* Build configuration list for PBXNativeTarget "GitHubMobile" */;
 			buildPhases = (
+				E8A455E1D39A9826AEE6B92D /* [CP] Check Pods Manifest.lock */,
 				053075541FF8686F00489708 /* Run Script (License Plist) */,
 				0541D3931FF3AB9A006DED14 /* Sources */,
 				0541D3941FF3AB9A006DED14 /* Frameworks */,
 				0541D3951FF3AB9A006DED14 /* Resources */,
 				056205E01FF60EE80044CB85 /* Embed Frameworks */,
+				F5CE7D8849891F54DADF0341 /* [CP] Embed Pods Frameworks */,
+				D17C3A15C7B857EF8B070296 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -340,6 +359,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ $CONFIGURATION = \"Debug\" ] && [ -e /usr/local/bin/license-plist ]; then\n/usr/local/bin/license-plist --output-path $PRODUCT_NAME/Settings.bundle --github-token 48260fb231e733ce5dde9fc26aa6b1f6ec3714a7 --suppress-opening-directory\nfi";
+		};
+		D17C3A15C7B857EF8B070296 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GitHubMobile/Pods-GitHubMobile-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8A455E1D39A9826AEE6B92D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GitHubMobile-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5CE7D8849891F54DADF0341 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GitHubMobile/Pods-GitHubMobile-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FDFullscreenPopGesture.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GitHubMobile/Pods-GitHubMobile-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -508,6 +578,7 @@
 		};
 		0541D3C01FF3AB9A006DED14 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FA39E4626DF1D614F250E65 /* Pods-GitHubMobile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -527,6 +598,7 @@
 		};
 		0541D3C11FF3AB9A006DED14 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AE25C49D2BEE304D3551EC2 /* Pods-GitHubMobile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
