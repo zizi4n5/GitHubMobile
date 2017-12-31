@@ -18,13 +18,15 @@ public enum OwnerType: String {
 
 public class GitHubRepository {
     
-    var nameWithOwner: String!
-    var owner: (name:String, avatarUrl: URL, type: OwnerType)!
-    var shortDescriptionHTML: NSAttributedString!
-    var topics = [String]()
-    var primaryLanguage: (name: String, color: UIColor?)!
-    var stargazersTotalCount: Int!
-    var url: URL!
-    var updatedAt: String!
-    var cursor: String!
+    public var nameWithOwner: String!
+    public var owner: (name:String, avatarUrl: URL, type: OwnerType)!
+    public var shortDescriptionHTML: NSAttributedString!
+    public var topics = [String]()
+    public var primaryLanguage: (name: String, color: UIColor?)!
+    public var stargazersTotalCount: Int!
+    public var url: URL!
+    public var updatedAt: String!
+    public var cursor: String!
+    
+    public init() {}
 }
