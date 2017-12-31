@@ -1,0 +1,14 @@
+# You can validate the YAML config file at http://yaml-online-parser.appspot.com
+
+# Specify GitHub's library manually.
+github:
+  - owner: mono0926
+    name: LicensePlist
+    version: 1.8.2
+  - owner: saku
+    name: HtmlLabel
+
+# Specify libraries' names to be renamed.
+rename:
+  LicensePlist: License Plist # Rename LicensePlist to "License Plist"
+  HtmlLabel: Html Label # Rename HtmlLabel to "Html Label"

@@ -1,0 +1,17 @@
+name: LicensePlist, nameSpecified: License Plist, owner: mono0926, version: 1.8.2
+
+name: HtmlLabel, nameSpecified: Html Label, owner: saku, version: 
+
+name: Alamofire, nameSpecified: , owner: Alamofire, version: 4.6.0
+
+name: AlamofireImage, nameSpecified: , owner: Alamofire, version: 3.3.0
+
+name: SkeletonView, nameSpecified: , owner: Juanpe, version: 1.0.4
+
+name: apollo-ios, nameSpecified: , owner: apollographql, version: 0.7.0
+
+name: SQLite.swift, nameSpecified: , owner: stephencelis, version: 0.11.4
+
+add-version-numbers: false
+
+LicensePlist Version: 1.8.2

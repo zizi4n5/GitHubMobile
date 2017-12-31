@@ -15,6 +15,7 @@
 		0530754F1FF70BF700489708 /* SkeletonView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0530754E1FF70BF700489708 /* SkeletonView.framework */; };
 		053075501FF70C0500489708 /* SkeletonView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0530754E1FF70BF700489708 /* SkeletonView.framework */; };
 		053075511FF70C0500489708 /* SkeletonView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0530754E1FF70BF700489708 /* SkeletonView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		053075531FF85E7F00489708 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 053075521FF85E7F00489708 /* Settings.bundle */; };
 		0541D39B1FF3AB9A006DED14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */; };
 		0541D3A01FF3AB9A006DED14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0541D39E1FF3AB9A006DED14 /* Main.storyboard */; };
 		0541D3A21FF3AB9A006DED14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0541D3A11FF3AB9A006DED14 /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		053075481FF67DF700489708 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		0530754C1FF6817200489708 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		0530754E1FF70BF700489708 /* SkeletonView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SkeletonView.framework; path = Carthage/Build/iOS/SkeletonView.framework; sourceTree = "<group>"; };
+		053075521FF85E7F00489708 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0541D3971FF3AB9A006DED14 /* GitHubMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0541D39F1FF3AB9A006DED14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		0541D3991FF3AB9A006DED14 /* GitHubMobile */ = {
 			isa = PBXGroup;
 			children = (
+				053075521FF85E7F00489708 /* Settings.bundle */,
 				0541D3A31FF3AB9A006DED14 /* LaunchScreen.storyboard */,
 				0541D39E1FF3AB9A006DED14 /* Main.storyboard */,
 				0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */,
@@ -219,6 +222,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0541D3BF1FF3AB9A006DED14 /* Build configuration list for PBXNativeTarget "GitHubMobile" */;
 			buildPhases = (
+				053075541FF8686F00489708 /* Run Script (License Plist) */,
 				0541D3931FF3AB9A006DED14 /* Sources */,
 				0541D3941FF3AB9A006DED14 /* Frameworks */,
 				0541D3951FF3AB9A006DED14 /* Resources */,
@@ -322,6 +326,7 @@
 			files = (
 				0541D3A51FF3AB9A006DED14 /* LaunchScreen.storyboard in Resources */,
 				0541D3A21FF3AB9A006DED14 /* Assets.xcassets in Resources */,
+				053075531FF85E7F00489708 /* Settings.bundle in Resources */,
 				0541D3A01FF3AB9A006DED14 /* Main.storyboard in Resources */,
 				0541D3D21FF3BF6B006DED14 /* GitHubGraphQLAPI.graphql in Resources */,
 			);
@@ -342,6 +347,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		053075541FF8686F00489708 /* Run Script (License Plist) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script (License Plist)";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ] && [ -e /usr/local/bin/license-plist ]; then\n/usr/local/bin/license-plist --output-path $PRODUCT_NAME/Settings.bundle --github-token 48260fb231e733ce5dde9fc26aa6b1f6ec3714a7 --suppress-opening-directory\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0541D3931FF3AB9A006DED14 /* Sources */ = {
