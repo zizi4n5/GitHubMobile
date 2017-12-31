@@ -8,7 +8,6 @@
 
 import UIKit
 import AlamofireImage
-import SkeletonView
 
 class RepositoryTableViewController: UITableViewController {
 
@@ -99,30 +98,13 @@ class RepositoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "repositoryCell", for: indexPath) as! RepositoryCell
-        
+        cell.initialize(repository: repositories[indexPath.row])
+
         // 下部までスクロールした場合、前もって次のデータを読み込む
         if !GitHubClient.default.isLoading && indexPath.row > repositories.count - pageLoadThreshold {
             loadRepositories(first: nextPageSize, after: repositories.last)
         }
         
-        let repository = repositories[indexPath.row]
-        if let _ = repository.url {
-            cell.hideSkeleton()
-            cell.avatarImage.image = nil
-            cell.avatarImage.af_setImage(withURL: repository.owner.avatarUrl)
-            cell.nameWithOwner.text = repository.nameWithOwner
-            cell.shortDescriptionHTML.attributedText = repository.shortDescriptionHTML
-            switch repository.stargazersTotalCount {
-            case 0..<1000:
-                cell.stars.text = "★ \(repository.stargazersTotalCount)"
-            default:
-                cell.stars.text = "★ \(String(format: "%.1f", Float(repository.stargazersTotalCount) / 1000))k"
-                break
-            }
-        } else {
-            let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .bottomRightTopLeft)
-            cell.showAnimatedGradientSkeleton(animation: animation)
-        }
         return cell
     }
     
