@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Extentions/Extentions.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GitHubClient/GitHubClient.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GitHubMobile.xcodeproj">
+   </FileRef>
+</Workspace>

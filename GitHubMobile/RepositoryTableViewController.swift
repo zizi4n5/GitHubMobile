@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GitHubClient
 import AlamofireImage
 
 class RepositoryTableViewController: UITableViewController {

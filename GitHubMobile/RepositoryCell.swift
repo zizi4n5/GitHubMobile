@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GitHubClient
 import SkeletonView
 
 fileprivate let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .bottomRightTopLeft)

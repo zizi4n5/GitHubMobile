@@ -8,7 +8,7 @@
 import UIKit
 
 extension String {
-    func convertHtml(withFont: UIFont? = nil, align: NSTextAlignment = .left) -> NSAttributedString {
+    public func convertHtml(withFont: UIFont? = nil, align: NSTextAlignment = .left) -> NSAttributedString {
         if let data = self.data(using: .utf8, allowLossyConversion: true),
             let attributedText = try? NSAttributedString(
                 data: data,

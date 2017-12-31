@@ -9,13 +9,14 @@
 import Foundation
 import Apollo
 import UIKit
+import Extentions
 
 public class GitHubClient {
     
     private let apollo: ApolloClient
     public var isLoading = false
 
-    init(token: String) {
+    public init(token: String) {
         let configuration: URLSessionConfiguration = .default
         configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(token)"]
         configuration.requestCachePolicy = .reloadIgnoringLocalCacheData // To avoid 412
