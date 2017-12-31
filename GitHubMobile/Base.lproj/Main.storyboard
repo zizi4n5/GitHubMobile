@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-1218" y="36"/>
         </scene>
-        <!--GitHub Repository List-->
+        <!--Repository Table View Controller-->
         <scene sceneID="kHW-4R-Xss">
             <objects>
                 <tableViewController id="Wl3-fW-rYT" customClass="RepositoryTableViewController" customModule="GitHubMobile" customModuleProvider="target" sceneMemberID="viewController">
@@ -113,7 +113,9 @@
                             <outlet property="delegate" destination="Wl3-fW-rYT" id="D0p-mf-CjM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="GitHub Repository List" id="iAs-Au-rPs"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="iAs-Au-rPs"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="0Sl-LN-PtW">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>

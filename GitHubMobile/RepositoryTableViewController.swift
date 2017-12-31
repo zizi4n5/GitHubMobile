@@ -18,8 +18,10 @@ class RepositoryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBarTitle()
+        
         repositories = [GitHubRepository](repeating: GitHubRepository(), count: firstPageSize)
-
+        
         tableView.estimatedRowHeight = 64
         tableView.rowHeight = UITableViewAutomaticDimension
         refreshControl?.addTarget(self, action: #selector(RepositoryTableViewController.refresh(sender:)), for: .valueChanged)
@@ -29,6 +31,21 @@ class RepositoryTableViewController: UITableViewController {
     
     @objc func refresh(sender: UIRefreshControl) {
         loadRepositories(first: firstPageSize)
+    }
+    
+    func setNavigationBarTitle() {
+
+        let naviLabel = UILabel()
+        let naviTitle = NSMutableAttributedString(string: "", attributes: [.foregroundColor: UIColor.black,
+                                                                                        .font: UIFont(name: "devicon", size: 40)!])
+        naviTitle.append(NSMutableAttributedString(string: " ★ ", attributes: [.foregroundColor: UIColor.darkGray,
+                                                                               .font: UIFont(name: "devicon", size: 25)!]))
+        naviTitle.append(NSMutableAttributedString(string: "", attributes: [.foregroundColor: UIColor(hexString: "#FE542B")!,
+                                                                                         .font: UIFont(name: "devicon", size: 40)!]))
+        naviLabel.attributedText = naviTitle
+        naviLabel.textAlignment = .justified
+        navigationItem.titleView = naviLabel
+        navigationItem.titleView?.sizeToFit()
     }
     
     func loadRepositories(first: Int, after: GitHubRepository? = nil) {

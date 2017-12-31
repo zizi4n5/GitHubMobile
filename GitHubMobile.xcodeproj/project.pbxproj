@@ -16,6 +16,7 @@
 		053075501FF70C0500489708 /* SkeletonView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0530754E1FF70BF700489708 /* SkeletonView.framework */; };
 		053075511FF70C0500489708 /* SkeletonView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0530754E1FF70BF700489708 /* SkeletonView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		053075531FF85E7F00489708 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 053075521FF85E7F00489708 /* Settings.bundle */; };
+		053075561FF8AA4600489708 /* devicon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 053075551FF8AA4600489708 /* devicon.ttf */; };
 		0541D39B1FF3AB9A006DED14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */; };
 		0541D3A01FF3AB9A006DED14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0541D39E1FF3AB9A006DED14 /* Main.storyboard */; };
 		0541D3A21FF3AB9A006DED14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0541D3A11FF3AB9A006DED14 /* Assets.xcassets */; };
@@ -73,6 +74,7 @@
 		0530754C1FF6817200489708 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		0530754E1FF70BF700489708 /* SkeletonView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SkeletonView.framework; path = Carthage/Build/iOS/SkeletonView.framework; sourceTree = "<group>"; };
 		053075521FF85E7F00489708 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		053075551FF8AA4600489708 /* devicon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = devicon.ttf; sourceTree = "<group>"; };
 		0541D3971FF3AB9A006DED14 /* GitHubMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0541D39F1FF3AB9A006DED14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				056205E11FF62B510044CB85 /* RepositoryCell.swift */,
 				0530754C1FF6817200489708 /* RepositoryDetailViewController.swift */,
 				0541D3A11FF3AB9A006DED14 /* Assets.xcassets */,
+				053075551FF8AA4600489708 /* devicon.ttf */,
 				0541D3A61FF3AB9A006DED14 /* Info.plist */,
 				056205ED1FF670650044CB85 /* GitHubClient */,
 				056205EE1FF670650044CB85 /* Extensions */,
@@ -321,6 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				053075561FF8AA4600489708 /* devicon.ttf in Resources */,
 				0541D3A21FF3AB9A006DED14 /* Assets.xcassets in Resources */,
 				053075531FF85E7F00489708 /* Settings.bundle in Resources */,
 				0541D3A01FF3AB9A006DED14 /* Main.storyboard in Resources */,
