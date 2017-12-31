@@ -12,11 +12,9 @@ import UIKit
 
 public class GitHubClient {
     
-    let apollo: ApolloClient
+    private let apollo: ApolloClient
     public var isLoading = false
 
-    static let `default` = GitHubClient(token: "f8cf3573a35ce4807a525348215c72d3a29e3bbe")
-    
     init(token: String) {
         let configuration: URLSessionConfiguration = .default
         configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(token)"]

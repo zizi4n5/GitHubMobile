@@ -11,6 +11,8 @@ import AlamofireImage
 
 class RepositoryTableViewController: UITableViewController {
 
+    private let github = GitHubClient(token: "f8cf3573a35ce4807a525348215c72d3a29e3bbe") // 今回はプライベートアクセストークンを利用してGitHubにアクセスする
+    
     private let firstPageSize = 50
     private let nextPageSize = 20
     private let pageLoadThreshold = 30
@@ -37,11 +39,11 @@ class RepositoryTableViewController: UITableViewController {
 
         let naviLabel = UILabel()
         let naviTitle = NSMutableAttributedString(string: "", attributes: [.foregroundColor: UIColor.black,
-                                                                                        .font: UIFont(name: "devicon", size: 40)!])
+                                                                                        .font: UIFont(name: "devicon", size: 30)!])
         naviTitle.append(NSMutableAttributedString(string: " ★ ", attributes: [.foregroundColor: UIColor.darkGray,
-                                                                               .font: UIFont(name: "devicon", size: 25)!]))
+                                                                               .font: UIFont(name: "devicon", size: 20)!]))
         naviTitle.append(NSMutableAttributedString(string: "", attributes: [.foregroundColor: UIColor(hexString: "#FE542B")!,
-                                                                                         .font: UIFont(name: "devicon", size: 40)!]))
+                                                                                         .font: UIFont(name: "devicon", size: 30)!]))
         naviLabel.attributedText = naviTitle
         naviLabel.textAlignment = .justified
         navigationItem.titleView = naviLabel
@@ -50,7 +52,7 @@ class RepositoryTableViewController: UITableViewController {
     
     func loadRepositories(first: Int, after: GitHubRepository? = nil) {
 
-        GitHubClient.default.getRepositories(first: first, after: after)  { (totalCount, repositories, error) in
+        github.getRepositories(first: first, after: after)  { (totalCount, repositories, error) in
 
             if let error = error {
                 print("Error: \(error)");
@@ -118,7 +120,7 @@ class RepositoryTableViewController: UITableViewController {
         cell.initialize(repository: repositories[indexPath.row])
 
         // 下部までスクロールした場合、前もって次のデータを読み込む
-        if !GitHubClient.default.isLoading && indexPath.row > repositories.count - pageLoadThreshold {
+        if !github.isLoading && indexPath.row > repositories.count - pageLoadThreshold {
             loadRepositories(first: nextPageSize, after: repositories.last)
         }
         
