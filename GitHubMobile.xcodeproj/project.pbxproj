@@ -10,10 +10,8 @@
 		052F4CF01FF8CD52009D8C66 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056205DA1FF60ECF0044CB85 /* Apollo.framework */; };
 		052F4CF11FF8CD52009D8C66 /* Apollo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 056205DA1FF60ECF0044CB85 /* Apollo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		052F4CF51FF8CDCC009D8C66 /* GitHubClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 052F4CF61FF8CDCC009D8C66 /* GitHubClient.framework */; };
-		052F4CF71FF8CDD2009D8C66 /* GitHubClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 052F4CF61FF8CDCC009D8C66 /* GitHubClient.framework */; };
 		052F4CF81FF8CDD2009D8C66 /* GitHubClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 052F4CF61FF8CDCC009D8C66 /* GitHubClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		052F4D231FF8D133009D8C66 /* Extentions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 052F4D241FF8D133009D8C66 /* Extentions.framework */; };
-		052F4D251FF8D138009D8C66 /* Extentions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 052F4D241FF8D133009D8C66 /* Extentions.framework */; };
 		052F4D261FF8D138009D8C66 /* Extentions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 052F4D241FF8D133009D8C66 /* Extentions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		053075461FF67B9900489708 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053075441FF67B8F00489708 /* AlamofireImage.framework */; };
 		053075471FF67B9900489708 /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 053075441FF67B8F00489708 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -100,12 +98,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				052F4D231FF8D133009D8C66 /* Extentions.framework in Frameworks */,
-				052F4D251FF8D138009D8C66 /* Extentions.framework in Frameworks */,
 				052F4CF51FF8CDCC009D8C66 /* GitHubClient.framework in Frameworks */,
 				053075491FF67DF700489708 /* Alamofire.framework in Frameworks */,
 				053075461FF67B9900489708 /* AlamofireImage.framework in Frameworks */,
 				052F4CF01FF8CD52009D8C66 /* Apollo.framework in Frameworks */,
-				052F4CF71FF8CDD2009D8C66 /* GitHubClient.framework in Frameworks */,
 				0530754F1FF70BF700489708 /* SkeletonView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
