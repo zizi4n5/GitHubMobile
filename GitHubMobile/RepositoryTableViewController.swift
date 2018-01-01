@@ -12,7 +12,7 @@ import AlamofireImage
 import FDFullscreenPopGesture
 import HidingNavigationBar
 
-class RepositoryTableViewController: UITableViewController {
+class RepositoryTableViewController: UITableViewController, HidingNavigationBarManagerDelegate {
 
     private let github = GitHubClient(token: "f8cf3573a35ce4807a525348215c72d3a29e3bbe") // 今回はプライベートアクセストークンを利用してGitHubにアクセスする
     
@@ -28,6 +28,7 @@ class RepositoryTableViewController: UITableViewController {
         setNavigationBarTitle()
         navigationController?.fd_fullscreenPopGestureRecognizer.isEnabled = true
         hidingNavBarManager = HidingNavigationBarManager(viewController: self, scrollView: tableView)
+        hidingNavBarManager?.delegate = self
         
         repositories = [GitHubRepository](repeating: GitHubRepository(), count: firstPageSize)
         
@@ -168,6 +169,22 @@ class RepositoryTableViewController: UITableViewController {
         
         return true
     }
+    
+    
+    // MARK: - HidingNavigationBarManagerDelegate
+    
+    func hidingNavigationBarManagerDidChangeState(_ manager: HidingNavigationBarManager, toState state: HidingNavigationBarState) {
+        
+    }
+    
+    func hidingNavigationBarManagerDidUpdateScrollViewInsets(_ manager: HidingNavigationBarManager) {
+        
+    }
+    
+    func hidingNavigationBarManagerShouldUpdateScrollViewInsets(_ manager: HidingNavigationBarManager, insets: UIEdgeInsets) -> Bool {
+        return false
+    }
+    
 
     // MARK: - Navigation
 
