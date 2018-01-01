@@ -10,11 +10,13 @@ import UIKit
 import GitHubClient
 import AlamofireImage
 import FDFullscreenPopGesture
+import HidingNavigationBar
 
 class RepositoryTableViewController: UITableViewController {
 
     private let github = GitHubClient(token: "f8cf3573a35ce4807a525348215c72d3a29e3bbe") // 今回はプライベートアクセストークンを利用してGitHubにアクセスする
     
+    private var hidingNavBarManager: HidingNavigationBarManager?
     private let firstPageSize = 50
     private let nextPageSize = 20
     private let pageLoadThreshold = 30
@@ -22,8 +24,10 @@ class RepositoryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.fd_fullscreenPopGestureRecognizer.isEnabled = true
+        
         setNavigationBarTitle()
+        navigationController?.fd_fullscreenPopGestureRecognizer.isEnabled = true
+        hidingNavBarManager = HidingNavigationBarManager(viewController: self, scrollView: tableView)
         
         repositories = [GitHubRepository](repeating: GitHubRepository(), count: firstPageSize)
         
@@ -95,7 +99,8 @@ class RepositoryTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        hidingNavBarManager?.viewWillAppear(animated)
+
         tableView.indexPathsForSelectedRows?.forEach {
             tableView.deselectRow(at: $0, animated: true)
         }
@@ -103,6 +108,18 @@ class RepositoryTableViewController: UITableViewController {
         tableView.flashScrollIndicators()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        hidingNavBarManager?.viewDidLayoutSubviews()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        hidingNavBarManager?.viewWillDisappear(animated)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -144,6 +161,14 @@ class RepositoryTableViewController: UITableViewController {
         }
     }
     
+    // MARK: UITableViewDelegate
+    
+    override func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
+        hidingNavBarManager?.shouldScrollToTop()
+        
+        return true
+    }
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

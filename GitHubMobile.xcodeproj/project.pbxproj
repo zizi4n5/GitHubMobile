@@ -28,6 +28,8 @@
 		0541D3B01FF3AB9A006DED14 /* GitHubMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541D3AF1FF3AB9A006DED14 /* GitHubMobileTests.swift */; };
 		0541D3BB1FF3AB9A006DED14 /* GitHubMobileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541D3BA1FF3AB9A006DED14 /* GitHubMobileUITests.swift */; };
 		0557765F1FF9B080006D9402 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0557765E1FF9B080006D9402 /* UIView+Extension.swift */; };
+		055776661FF9F0BD006D9402 /* HidingNavigationBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 055776651FF9F0BD006D9402 /* HidingNavigationBar.framework */; };
+		055776681FF9F0C5006D9402 /* HidingNavigationBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 055776651FF9F0BD006D9402 /* HidingNavigationBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		056205E31FF62B510044CB85 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056205E11FF62B510044CB85 /* RepositoryCell.swift */; };
 		056205E61FF6329E0044CB85 /* RepositoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */; };
 		1FADD64A73BB6470BC0A2581 /* Pods_GitHubMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A144CE86DAB16C15319AE0C /* Pods_GitHubMobile.framework */; };
@@ -59,6 +61,7 @@
 			files = (
 				0530754B1FF67DFE00489708 /* Alamofire.framework in Embed Frameworks */,
 				053075511FF70C0500489708 /* SkeletonView.framework in Embed Frameworks */,
+				055776681FF9F0C5006D9402 /* HidingNavigationBar.framework in Embed Frameworks */,
 				052F4CF11FF8CD52009D8C66 /* Apollo.framework in Embed Frameworks */,
 				053075471FF67B9900489708 /* AlamofireImage.framework in Embed Frameworks */,
 				052F4CF81FF8CDD2009D8C66 /* GitHubClient.framework in Embed Frameworks */,
@@ -90,6 +93,7 @@
 		0541D3BA1FF3AB9A006DED14 /* GitHubMobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubMobileUITests.swift; sourceTree = "<group>"; };
 		0541D3BC1FF3AB9A006DED14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0557765E1FF9B080006D9402 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		055776651FF9F0BD006D9402 /* HidingNavigationBar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HidingNavigationBar.framework; path = Carthage/Build/iOS/HidingNavigationBar.framework; sourceTree = "<group>"; };
 		056205DA1FF60ECF0044CB85 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
 		056205E11FF62B510044CB85 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				055776661FF9F0BD006D9402 /* HidingNavigationBar.framework in Frameworks */,
 				052F4D231FF8D133009D8C66 /* Extentions.framework in Frameworks */,
 				052F4CF51FF8CDCC009D8C66 /* GitHubClient.framework in Frameworks */,
 				053075491FF67DF700489708 /* Alamofire.framework in Frameworks */,
@@ -190,6 +195,7 @@
 		05D975851FF60E3600616E07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				055776651FF9F0BD006D9402 /* HidingNavigationBar.framework */,
 				052F4D241FF8D133009D8C66 /* Extentions.framework */,
 				052F4CF61FF8CDCC009D8C66 /* GitHubClient.framework */,
 				056205DA1FF60ECF0044CB85 /* Apollo.framework */,
