@@ -17,7 +17,7 @@ class RepositoryTableViewController: UITableViewController, HidingNavigationBarM
     private let github = GitHubClient(token: "f8cf3573a35ce4807a525348215c72d3a29e3bbe") // 今回はプライベートアクセストークンを利用してGitHubにアクセスする
     
     private var hidingNavBarManager: HidingNavigationBarManager?
-    private let firstPageSize = 50
+    private let firstPageSize = 30
     private let nextPageSize = 20
     private let pageLoadThreshold = 30
     var repositories: [GitHubRepository]!
