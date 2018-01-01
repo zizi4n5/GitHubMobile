@@ -11,20 +11,31 @@ import GitHubClient
 import AlamofireImage
 import FDFullscreenPopGesture
 import HidingNavigationBar
+import KeychainAccess
+import OAuthSwift
+
+fileprivate let firstPageSize = 50
+fileprivate let nextPageSize = 20
+fileprivate let pageLoadThreshold = 30
 
 class RepositoryTableViewController: UITableViewController, HidingNavigationBarManagerDelegate {
 
     private let github = GitHubClient(token: "f8cf3573a35ce4807a525348215c72d3a29e3bbe") // 今回はプライベートアクセストークンを利用してGitHubにアクセスする
+
+    let oauthswift = OAuth2Swift(
+        consumerKey:    "4dd6e2ec2e03119aa7bd",
+        consumerSecret: "6e1847dac03635fa3d0e9de2c28c86f57f4d38b0",
+        authorizeUrl:   "https://github.com/login/oauth/authorize",
+        accessTokenUrl: "https://github.com/login/oauth/access_token",
+        responseType:   "token"
+    )
     
     private var hidingNavBarManager: HidingNavigationBarManager?
-    private let firstPageSize = 50
-    private let nextPageSize = 20
-    private let pageLoadThreshold = 30
     var repositories: [GitHubRepository]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setNavigationBarTitle()
         navigationController?.fd_fullscreenPopGestureRecognizer.isEnabled = true
         hidingNavBarManager = HidingNavigationBarManager(viewController: self, scrollView: tableView)
@@ -37,6 +48,22 @@ class RepositoryTableViewController: UITableViewController, HidingNavigationBarM
         refreshControl?.addTarget(self, action: #selector(RepositoryTableViewController.refresh(sender:)), for: .valueChanged)
         
         loadRepositories(first: firstPageSize)
+    }
+    
+    @IBAction func login(_ sender: Any) {
+        
+        let state = generateState(withLength: 20)
+        
+        let _ = oauthswift.authorize(
+            withCallbackURL: URL(string: "zizi4n5githubmobile://oauth-callback")!, scope: "repo", state: state,
+            success: { credential, response, parameters in
+                self.github = GitHubClient(token: credential.oauthToken)
+                self.loadRepositories(first: firstPageSize)
+        },
+            failure: { error in
+                // TODO エラーメッセージ
+        }
+        )
     }
     
     @objc func refresh(sender: UIRefreshControl) {

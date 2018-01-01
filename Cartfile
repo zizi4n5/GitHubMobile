@@ -3,3 +3,5 @@ github "Alamofire/Alamofire"
 github "Alamofire/AlamofireImage"
 github "Juanpe/SkeletonView"
 github "tristanhimmelman/HidingNavigationBar" ~> 2.0
+github "OAuthSwift/OAuthSwift" ~> 1.2.0
+github "kishikawakatsumi/KeychainAccess"

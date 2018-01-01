@@ -1,6 +1,8 @@
 github "Alamofire/Alamofire" "4.6.0"
 github "Alamofire/AlamofireImage" "3.3.0"
 github "Juanpe/SkeletonView" "1.0.4"
+github "OAuthSwift/OAuthSwift" "1.2.0"
 github "apollographql/apollo-ios" "0.7.0"
+github "kishikawakatsumi/KeychainAccess" "v3.1.0"
 github "stephencelis/SQLite.swift" "0.11.4"
 github "tristanhimmelman/HidingNavigationBar" "2.0.1"

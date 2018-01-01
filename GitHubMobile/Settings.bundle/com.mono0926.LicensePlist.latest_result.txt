@@ -14,7 +14,11 @@ name: AlamofireImage, nameSpecified: , owner: Alamofire, version: 3.3.0
 
 name: SkeletonView, nameSpecified: , owner: Juanpe, version: 1.0.4
 
+name: OAuthSwift, nameSpecified: , owner: OAuthSwift, version: 1.2.0
+
 name: apollo-ios, nameSpecified: , owner: apollographql, version: 0.7.0
+
+name: KeychainAccess, nameSpecified: , owner: kishikawakatsumi, version: v3.1.0
 
 name: SQLite.swift, nameSpecified: , owner: stephencelis, version: 0.11.4
 
