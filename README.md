@@ -17,7 +17,7 @@
 
 ``` bash
 cd ${GitHubMobile展開フォルダ}
-carthage bootstrap
+carthage bootstrap --platform iOS
 pod install
 ```
 
