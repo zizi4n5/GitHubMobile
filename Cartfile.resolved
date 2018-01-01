@@ -1,5 +1,6 @@
 github "Alamofire/Alamofire" "4.6.0"
 github "Alamofire/AlamofireImage" "3.3.0"
 github "Juanpe/SkeletonView" "1.0.4"
+github "andreamazz/AMScrollingNavbar" "4.2.1"
 github "apollographql/apollo-ios" "0.7.0"
 github "stephencelis/SQLite.swift" "0.11.4"

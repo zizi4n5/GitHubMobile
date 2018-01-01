@@ -12,6 +12,8 @@ name: AlamofireImage, nameSpecified: , owner: Alamofire, version: 3.3.0
 
 name: SkeletonView, nameSpecified: , owner: Juanpe, version: 1.0.4
 
+name: AMScrollingNavbar, nameSpecified: , owner: andreamazz, version: 4.2.1
+
 name: apollo-ios, nameSpecified: , owner: apollographql, version: 0.7.0
 
 name: SQLite.swift, nameSpecified: , owner: stephencelis, version: 0.11.4

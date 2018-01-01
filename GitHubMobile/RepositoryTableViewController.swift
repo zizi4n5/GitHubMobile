@@ -10,6 +10,7 @@ import UIKit
 import GitHubClient
 import AlamofireImage
 import FDFullscreenPopGesture
+import AMScrollingNavbar
 
 class RepositoryTableViewController: UITableViewController {
 
@@ -95,6 +96,10 @@ class RepositoryTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(tableView)
+        }
         
         tableView.indexPathsForSelectedRows?.forEach {
             tableView.deselectRow(at: $0, animated: true)
@@ -102,7 +107,15 @@ class RepositoryTableViewController: UITableViewController {
 
         tableView.flashScrollIndicators()
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.stopFollowingScrollView(showingNavbar: true)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -8,6 +8,7 @@
 
 import UIKit
 import SkeletonView
+import AMScrollingNavbar
 
 class RepositoryDetailViewController: UIViewController, UIWebViewDelegate {
 
@@ -23,10 +24,25 @@ class RepositoryDetailViewController: UIViewController, UIWebViewDelegate {
         skeletonView.showAnimatedGradientSkeleton()
         navigationItem.title = repositoryName
 
-        
         let request = URLRequest(url: url)
         webview.delegate = self
         webview.loadRequest(request)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(webview)
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.stopFollowingScrollView(showingNavbar: true)
+        }
     }
     
     override func didReceiveMemoryWarning() {
