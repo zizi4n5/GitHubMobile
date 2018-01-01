@@ -4,6 +4,7 @@ query SearchRepositories($queryString: String!, $first: Int!, $after: String) {
         edges {
             node {
                 ... on Repository {
+                    name # レポジトリ名
                     nameWithOwner # オーナー名/レポジトリ名
                     owner {
                         login # オーナー名

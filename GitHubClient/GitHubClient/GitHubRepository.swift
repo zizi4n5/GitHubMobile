@@ -18,6 +18,7 @@ public enum OwnerType: String {
 
 public class GitHubRepository {
     
+    public var name: String!
     public var nameWithOwner: String!
     public var owner: (name:String, avatarUrl: URL, type: OwnerType)!
     public var shortDescriptionHTML: NSAttributedString!

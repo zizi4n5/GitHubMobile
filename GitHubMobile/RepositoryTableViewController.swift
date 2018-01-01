@@ -139,16 +139,17 @@ class RepositoryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let url = repositories[indexPath.row].url {
-            performSegue(withIdentifier: "OpenRepositoryDetail", sender: url)
+        if let _ = repositories[indexPath.row].url {
+            performSegue(withIdentifier: "OpenRepositoryDetail", sender: repositories[indexPath.row])
         }
     }
     
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailVC = segue.destination as? RepositoryDetailViewController, let url = sender as? URL {
-            detailVC.url = url
+        if let detailVC = segue.destination as? RepositoryDetailViewController, let repository = sender as? GitHubRepository {
+            detailVC.repositoryName = repository.name
+            detailVC.url = repository.url
         }
     }
 }

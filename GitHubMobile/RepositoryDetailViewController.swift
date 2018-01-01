@@ -14,12 +14,15 @@ class RepositoryDetailViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var webview: UIWebView!
     @IBOutlet weak var skeletonView: UIView!
     
+    var repositoryName: String!
     var url: URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         skeletonView.setSkeletonable(skeletonable: true)
         skeletonView.showAnimatedGradientSkeleton()
+        navigationItem.title = repositoryName
+
         
         let request = URLRequest(url: url)
         webview.delegate = self

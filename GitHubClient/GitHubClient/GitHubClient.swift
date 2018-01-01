@@ -54,6 +54,7 @@ public class GitHubClient {
                 
                 let repository = GitHubRepository()
                 repository.owner = (asRepository.owner.login, URL(string: asRepository.owner.avatarUrl)!, OwnerType(rawValue: asRepository.owner.__typename)!)
+                repository.name = asRepository.name
                 repository.nameWithOwner = asRepository.nameWithOwner
                 repository.shortDescriptionHTML = asRepository.shortDescriptionHtml.convertHtml()
                 repository.stargazersTotalCount = asRepository.stargazers.totalCount

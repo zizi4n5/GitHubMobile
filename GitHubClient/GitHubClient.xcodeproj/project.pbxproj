@@ -132,6 +132,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 053075751FF8CAAF00489708 /* Build configuration list for PBXNativeTarget "GitHubClient" */;
 			buildPhases = (
+				055776601FF9B9EA006D9402 /* Run Script (Apollo Codegen) */,
 				0530755C1FF8CAAE00489708 /* Sources */,
 				0530755D1FF8CAAE00489708 /* Frameworks */,
 				0530755E1FF8CAAE00489708 /* Headers */,
@@ -220,6 +221,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		055776601FF9B9EA006D9402 /* Run Script (Apollo Codegen) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script (Apollo Codegen)";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ] && [ -e /usr/local/bin/apollo-codegen ]; then\n/usr/local/bin/apollo-codegen generate $PRODUCT_NAME/GitHubGraphQLAPI.graphql --schema $PRODUCT_NAME/GitHubGraphQLSchema.json --output $PRODUCT_NAME/GitHubGraphQLAPI.swift\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0530755C1FF8CAAE00489708 /* Sources */ = {
