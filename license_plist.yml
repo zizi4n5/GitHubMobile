@@ -7,6 +7,9 @@ github:
     version: 1.8.2
   - owner: saku
     name: HtmlLabel
+  - owner: konpa
+    name: devicon
+    version: v2.2
 
 # Specify libraries' names to be renamed.
 rename:
