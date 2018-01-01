@@ -27,7 +27,7 @@
 		0541D3A21FF3AB9A006DED14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0541D3A11FF3AB9A006DED14 /* Assets.xcassets */; };
 		0541D3B01FF3AB9A006DED14 /* GitHubMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541D3AF1FF3AB9A006DED14 /* GitHubMobileTests.swift */; };
 		0541D3BB1FF3AB9A006DED14 /* GitHubMobileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541D3BA1FF3AB9A006DED14 /* GitHubMobileUITests.swift */; };
-		054D105E1FF8EA1100F01B45 /* SkeletonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054D105D1FF8EA1100F01B45 /* SkeletonLabel.swift */; };
+		0557765F1FF9B080006D9402 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0557765E1FF9B080006D9402 /* UIView+Extension.swift */; };
 		056205E31FF62B510044CB85 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056205E11FF62B510044CB85 /* RepositoryCell.swift */; };
 		056205E61FF6329E0044CB85 /* RepositoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */; };
 		1FADD64A73BB6470BC0A2581 /* Pods_GitHubMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A144CE86DAB16C15319AE0C /* Pods_GitHubMobile.framework */; };
@@ -89,7 +89,7 @@
 		0541D3B61FF3AB9A006DED14 /* GitHubMobileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubMobileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0541D3BA1FF3AB9A006DED14 /* GitHubMobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubMobileUITests.swift; sourceTree = "<group>"; };
 		0541D3BC1FF3AB9A006DED14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		054D105D1FF8EA1100F01B45 /* SkeletonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLabel.swift; sourceTree = "<group>"; };
+		0557765E1FF9B080006D9402 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		056205DA1FF60ECF0044CB85 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
 		056205E11FF62B510044CB85 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewController.swift; sourceTree = "<group>"; };
@@ -158,10 +158,10 @@
 				053075521FF85E7F00489708 /* Settings.bundle */,
 				0541D39E1FF3AB9A006DED14 /* Main.storyboard */,
 				0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */,
+				0557765E1FF9B080006D9402 /* UIView+Extension.swift */,
 				056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */,
 				056205E11FF62B510044CB85 /* RepositoryCell.swift */,
 				0530754C1FF6817200489708 /* RepositoryDetailViewController.swift */,
-				054D105D1FF8EA1100F01B45 /* SkeletonLabel.swift */,
 				0541D3A11FF3AB9A006DED14 /* Assets.xcassets */,
 				053075551FF8AA4600489708 /* devicon.ttf */,
 				0541D3A61FF3AB9A006DED14 /* Info.plist */,
@@ -419,9 +419,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				056205E61FF6329E0044CB85 /* RepositoryTableViewController.swift in Sources */,
-				054D105E1FF8EA1100F01B45 /* SkeletonLabel.swift in Sources */,
 				0530754D1FF6817200489708 /* RepositoryDetailViewController.swift in Sources */,
 				056205E31FF62B510044CB85 /* RepositoryCell.swift in Sources */,
+				0557765F1FF9B080006D9402 /* UIView+Extension.swift in Sources */,
 				0541D39B1FF3AB9A006DED14 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

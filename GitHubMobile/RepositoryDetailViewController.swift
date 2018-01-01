@@ -18,6 +18,8 @@ class RepositoryDetailViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        skeletonView.setSkeletonable(skeletonable: true)
+        skeletonView.showAnimatedGradientSkeleton()
         
         let request = URLRequest(url: url)
         webview.delegate = self

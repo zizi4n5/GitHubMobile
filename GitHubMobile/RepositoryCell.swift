@@ -10,8 +10,6 @@ import UIKit
 import GitHubClient
 import SkeletonView
 
-fileprivate let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .bottomRightTopLeft)
-
 class RepositoryCell: UITableViewCell {
 
     @IBOutlet weak var avatarImage: UIImageView!
@@ -22,11 +20,7 @@ class RepositoryCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        avatarImage.isSkeletonable = true
-        nameWithOwner.isSkeletonable = true
-        shortDescriptionHTML.isSkeletonable = true
-        stars.isSkeletonable = true
-        showAnimatedGradientSkeleton(animation: animation)
+        setSkeletonable(skeletonable: true)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,7 +39,7 @@ class RepositoryCell: UITableViewCell {
             "★ \(String(format: "%.1f", Float(repository.stargazersTotalCount) / 1000))k"
             hideSkeleton()
         } else {
-            showAnimatedGradientSkeleton(animation: animation)
+            showAnimatedGradientSkeleton()
         }
     }
 }
