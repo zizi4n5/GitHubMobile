@@ -354,7 +354,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		053075541FF8686F00489708 /* Run Script (License Plist) */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -364,7 +364,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $CONFIGURATION = \"Debug\" ] && [ -e /usr/local/bin/license-plist ]; then\n/usr/local/bin/license-plist --output-path $PRODUCT_NAME/Settings.bundle --github-token 48260fb231e733ce5dde9fc26aa6b1f6ec3714a7 --suppress-opening-directory --add-version-numbers\nfi";
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ] && [ -e /usr/local/bin/license-plist ] && [ $GITHUB_TOKEN_LICENSE_PLIST ]; then\n/usr/local/bin/license-plist --output-path $PRODUCT_NAME/Settings.bundle --github-token $GITHUB_TOKEN_LICENSE_PLIST --suppress-opening-directory --add-version-numbers\nfi";
 		};
 		D17C3A15C7B857EF8B070296 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
