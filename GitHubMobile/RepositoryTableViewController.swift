@@ -11,38 +11,42 @@ import GitHubClient
 import AlamofireImage
 import FDFullscreenPopGesture
 import HidingNavigationBar
+import KeychainAccess
+
+fileprivate let firstPageSize = 50
+fileprivate let nextPageSize = 20
+fileprivate let pageLoadThreshold = 30
 
 class RepositoryTableViewController: UITableViewController, HidingNavigationBarManagerDelegate {
 
-    private let github = GitHubClient(token: "f8cf3573a35ce4807a525348215c72d3a29e3bbe") // 今回はプライベートアクセストークンを利用してGitHubにアクセスする
-    
+    internal var github: GitHubClient!
+    internal var user: GitHubUser!
+
     private var hidingNavBarManager: HidingNavigationBarManager?
-    private let firstPageSize = 30
-    private let nextPageSize = 20
-    private let pageLoadThreshold = 30
-    var repositories: [GitHubRepository]!
+    var repositories = [GitHubRepository]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setNavigationBarTitle()
         navigationController?.fd_fullscreenPopGestureRecognizer.isEnabled = true
         hidingNavBarManager = HidingNavigationBarManager(viewController: self, scrollView: tableView)
         hidingNavBarManager?.delegate = self
         
-        repositories = [GitHubRepository](repeating: GitHubRepository(), count: firstPageSize)
-        
         tableView.estimatedRowHeight = 64
         tableView.rowHeight = UITableViewAutomaticDimension
         refreshControl?.addTarget(self, action: #selector(RepositoryTableViewController.refresh(sender:)), for: .valueChanged)
         
+        repositories = [GitHubRepository](repeating: GitHubRepository(), count: firstPageSize)
         loadRepositories(first: firstPageSize)
+        tableView.reloadData()
     }
     
     @objc func refresh(sender: UIRefreshControl) {
         loadRepositories(first: firstPageSize)
     }
     
+    let downloader = ImageDownloader()
     func setNavigationBarTitle() {
 
         let naviLabel = UILabel()
@@ -56,10 +60,26 @@ class RepositoryTableViewController: UITableViewController, HidingNavigationBarM
         naviLabel.textAlignment = .justified
         navigationItem.titleView = naviLabel
         navigationItem.titleView?.sizeToFit()
+        
+        let avatarSize = CGSize(width: 40.0, height: 40.0)
+        let filter = AspectScaledToFillSizeCircleFilter(size: avatarSize)
+        downloader.download(URLRequest(url: user.avatarUrl), filter: filter) { response in
+            if let image = response.result.value {
+                let avatarButton = UIButton(frame: CGRect(origin: CGPoint(), size: avatarSize))
+                avatarButton.setBackgroundImage(image, for: .normal)
+//                avatarButton.addTarget(self, action: #selector(RepositoryTableViewController.handleMore), for: .touchUpInside)
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: avatarButton)
+            }
+        }
     }
     
     func loadRepositories(first: Int, after: GitHubRepository? = nil) {
 
+        guard let github = github else {
+            self.refreshControl?.endRefreshing()
+            return
+        }
+        
         github.getRepositories(first: first, after: after)  { (totalCount, repositories, error) in
 
             if let error = error {
@@ -187,7 +207,7 @@ class RepositoryTableViewController: UITableViewController, HidingNavigationBarM
     
 
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detailVC = segue.destination as? RepositoryDetailViewController, let repository = sender as? GitHubRepository {
             detailVC.repositoryName = repository.name

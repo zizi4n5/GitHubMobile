@@ -32,6 +32,11 @@
 		055776681FF9F0C5006D9402 /* HidingNavigationBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 055776651FF9F0BD006D9402 /* HidingNavigationBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		056205E31FF62B510044CB85 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056205E11FF62B510044CB85 /* RepositoryCell.swift */; };
 		056205E61FF6329E0044CB85 /* RepositoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */; };
+		0576AFBC1FFC882F00235DE5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0576AFBB1FFC882F00235DE5 /* LoginViewController.swift */; };
+		05D4C4241FFA0A3000E6A443 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D4C4221FFA0A2C00E6A443 /* OAuthSwift.framework */; };
+		05D4C4251FFA0A3000E6A443 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05D4C4221FFA0A2C00E6A443 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		05D4C42A1FFA14F800E6A443 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D4C4281FFA14F300E6A443 /* KeychainAccess.framework */; };
+		05D4C42B1FFA14F800E6A443 /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05D4C4281FFA14F300E6A443 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1FADD64A73BB6470BC0A2581 /* Pods_GitHubMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A144CE86DAB16C15319AE0C /* Pods_GitHubMobile.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +70,8 @@
 				052F4CF11FF8CD52009D8C66 /* Apollo.framework in Embed Frameworks */,
 				053075471FF67B9900489708 /* AlamofireImage.framework in Embed Frameworks */,
 				052F4CF81FF8CDD2009D8C66 /* GitHubClient.framework in Embed Frameworks */,
+				05D4C42B1FFA14F800E6A443 /* KeychainAccess.framework in Embed Frameworks */,
+				05D4C4251FFA0A3000E6A443 /* OAuthSwift.framework in Embed Frameworks */,
 				052F4D261FF8D138009D8C66 /* Extentions.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -97,6 +104,9 @@
 		056205DA1FF60ECF0044CB85 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
 		056205E11FF62B510044CB85 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewController.swift; sourceTree = "<group>"; };
+		0576AFBB1FFC882F00235DE5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		05D4C4221FFA0A2C00E6A443 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
+		05D4C4281FFA14F300E6A443 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		1AE25C49D2BEE304D3551EC2 /* Pods-GitHubMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubMobile/Pods-GitHubMobile.release.xcconfig"; sourceTree = "<group>"; };
 		8A144CE86DAB16C15319AE0C /* Pods_GitHubMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FA39E4626DF1D614F250E65 /* Pods-GitHubMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubMobile/Pods-GitHubMobile.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,7 +119,9 @@
 			files = (
 				055776661FF9F0BD006D9402 /* HidingNavigationBar.framework in Frameworks */,
 				052F4D231FF8D133009D8C66 /* Extentions.framework in Frameworks */,
+				05D4C42A1FFA14F800E6A443 /* KeychainAccess.framework in Frameworks */,
 				052F4CF51FF8CDCC009D8C66 /* GitHubClient.framework in Frameworks */,
+				05D4C4241FFA0A3000E6A443 /* OAuthSwift.framework in Frameworks */,
 				053075491FF67DF700489708 /* Alamofire.framework in Frameworks */,
 				053075461FF67B9900489708 /* AlamofireImage.framework in Frameworks */,
 				052F4CF01FF8CD52009D8C66 /* Apollo.framework in Frameworks */,
@@ -164,6 +176,7 @@
 				0541D39E1FF3AB9A006DED14 /* Main.storyboard */,
 				0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */,
 				0557765E1FF9B080006D9402 /* UIView+Extension.swift */,
+				0576AFBB1FFC882F00235DE5 /* LoginViewController.swift */,
 				056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */,
 				056205E11FF62B510044CB85 /* RepositoryCell.swift */,
 				0530754C1FF6817200489708 /* RepositoryDetailViewController.swift */,
@@ -195,6 +208,8 @@
 		05D975851FF60E3600616E07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				05D4C4281FFA14F300E6A443 /* KeychainAccess.framework */,
+				05D4C4221FFA0A2C00E6A443 /* OAuthSwift.framework */,
 				055776651FF9F0BD006D9402 /* HidingNavigationBar.framework */,
 				052F4D241FF8D133009D8C66 /* Extentions.framework */,
 				052F4CF61FF8CDCC009D8C66 /* GitHubClient.framework */,
@@ -424,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0576AFBC1FFC882F00235DE5 /* LoginViewController.swift in Sources */,
 				056205E61FF6329E0044CB85 /* RepositoryTableViewController.swift in Sources */,
 				0530754D1FF6817200489708 /* RepositoryDetailViewController.swift in Sources */,
 				056205E31FF62B510044CB85 /* RepositoryCell.swift in Sources */,
