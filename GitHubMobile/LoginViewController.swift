@@ -21,7 +21,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        keychain["github.token"] = nil
     }
     
     override func viewDidAppear(_ animated: Bool) {
