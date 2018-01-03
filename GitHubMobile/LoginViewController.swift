@@ -27,7 +27,17 @@ class LoginViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if let token = keychain["github.token"] {
-            self.performSegue(withIdentifier: "OpenRepositoryList", sender: token)
+            let github = GitHubClient(token: token)
+            github.getLoginUser { (user, error) in
+                guard let user = user else {
+                    // TODO Error Message
+                    print(error!)
+                    return
+                }
+                
+                self.keychain["github.token"] = token
+                self.performSegue(withIdentifier: "OpenRepositoryList", sender: (github, user))
+            }
         } else {
             UIView.animate(withDuration: 0.5) {
                 self.signIn.alpha = 1.0
