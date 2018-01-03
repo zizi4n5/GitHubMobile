@@ -22,8 +22,6 @@ class RepositoryTableViewController: UITableViewController, HidingNavigationBarM
     internal var github: GitHubClient!
     internal var user: GitHubUser!
 
-    @IBOutlet weak var avatar: UIBarButtonItem!
-    
     private var hidingNavBarManager: HidingNavigationBarManager?
     var repositories = [GitHubRepository]()
     
@@ -63,10 +61,11 @@ class RepositoryTableViewController: UITableViewController, HidingNavigationBarM
         navigationItem.titleView = naviLabel
         navigationItem.titleView?.sizeToFit()
         
-        let filter = AspectScaledToFillSizeCircleFilter(size: CGSize(width: 44.0, height: 44.0))
+        let avatarSize = CGSize(width: 40.0, height: 40.0)
+        let filter = AspectScaledToFillSizeCircleFilter(size: avatarSize)
         downloader.download(URLRequest(url: user.avatarUrl), filter: filter) { response in
             if let image = response.result.value {
-                let avatarButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44.0, height: 44.0))
+                let avatarButton = UIButton(frame: CGRect(origin: CGPoint(), size: avatarSize))
                 avatarButton.setBackgroundImage(image, for: .normal)
 //                avatarButton.addTarget(self, action: #selector(RepositoryTableViewController.handleMore), for: .touchUpInside)
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: avatarButton)
