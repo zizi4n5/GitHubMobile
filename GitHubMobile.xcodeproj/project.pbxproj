@@ -32,6 +32,7 @@
 		055776681FF9F0C5006D9402 /* HidingNavigationBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 055776651FF9F0BD006D9402 /* HidingNavigationBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		056205E31FF62B510044CB85 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056205E11FF62B510044CB85 /* RepositoryCell.swift */; };
 		056205E61FF6329E0044CB85 /* RepositoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */; };
+		0576AFBC1FFC882F00235DE5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0576AFBB1FFC882F00235DE5 /* LoginViewController.swift */; };
 		05D4C4241FFA0A3000E6A443 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D4C4221FFA0A2C00E6A443 /* OAuthSwift.framework */; };
 		05D4C4251FFA0A3000E6A443 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05D4C4221FFA0A2C00E6A443 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		05D4C42A1FFA14F800E6A443 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D4C4281FFA14F300E6A443 /* KeychainAccess.framework */; };
@@ -103,6 +104,7 @@
 		056205DA1FF60ECF0044CB85 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
 		056205E11FF62B510044CB85 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewController.swift; sourceTree = "<group>"; };
+		0576AFBB1FFC882F00235DE5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		05D4C4221FFA0A2C00E6A443 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
 		05D4C4281FFA14F300E6A443 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		1AE25C49D2BEE304D3551EC2 /* Pods-GitHubMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubMobile/Pods-GitHubMobile.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				0541D39E1FF3AB9A006DED14 /* Main.storyboard */,
 				0541D39A1FF3AB9A006DED14 /* AppDelegate.swift */,
 				0557765E1FF9B080006D9402 /* UIView+Extension.swift */,
+				0576AFBB1FFC882F00235DE5 /* LoginViewController.swift */,
 				056205E51FF6329E0044CB85 /* RepositoryTableViewController.swift */,
 				056205E11FF62B510044CB85 /* RepositoryCell.swift */,
 				0530754C1FF6817200489708 /* RepositoryDetailViewController.swift */,
@@ -366,7 +369,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		053075541FF8686F00489708 /* Run Script (License Plist) */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -376,7 +379,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $CONFIGURATION = \"Debug\" ] && [ -e /usr/local/bin/license-plist ]; then\n/usr/local/bin/license-plist --output-path $PRODUCT_NAME/Settings.bundle --github-token 48260fb231e733ce5dde9fc26aa6b1f6ec3714a7 --suppress-opening-directory\nfi";
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ] && [ -e /usr/local/bin/license-plist ] && [ $GITHUB_TOKEN_LICENSE_PLIST ]; then\n/usr/local/bin/license-plist --output-path $PRODUCT_NAME/Settings.bundle --github-token $GITHUB_TOKEN_LICENSE_PLIST --suppress-opening-directory --add-version-numbers\nfi";
 		};
 		D17C3A15C7B857EF8B070296 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -436,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0576AFBC1FFC882F00235DE5 /* LoginViewController.swift in Sources */,
 				056205E61FF6329E0044CB85 /* RepositoryTableViewController.swift in Sources */,
 				0530754D1FF6817200489708 /* RepositoryDetailViewController.swift in Sources */,
 				056205E31FF62B510044CB85 /* RepositoryCell.swift in Sources */,

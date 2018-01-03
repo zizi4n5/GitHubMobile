@@ -24,6 +24,6 @@ name: SQLite.swift, nameSpecified: , owner: stephencelis, version: 0.11.4
 
 name: HidingNavigationBar, nameSpecified: , owner: tristanhimmelman, version: 2.0.1
 
-add-version-numbers: false
+add-version-numbers: true
 
 LicensePlist Version: 1.8.2

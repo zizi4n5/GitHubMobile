@@ -1,3 +1,10 @@
+query LoginUser {
+    viewer {
+        name # ログインユーザー名
+        avatarUrl # ログインユーザーのアバターURL
+    }
+}
+
 query SearchRepositories($queryString: String!, $first: Int!, $after: String) {
     search(query: $queryString, type: REPOSITORY, first: $first after: $after) {
         repositoryCount #　レポジトリ数

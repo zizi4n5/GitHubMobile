@@ -2,6 +2,91 @@
 
 import Apollo
 
+public final class LoginUserQuery: GraphQLQuery {
+  public static let operationString =
+    "query LoginUser {\n  viewer {\n    __typename\n    name\n    avatarUrl\n  }\n}"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("viewer", type: .nonNull(.object(Viewer.selections))),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(viewer: Viewer) {
+      self.init(snapshot: ["__typename": "Query", "viewer": viewer.snapshot])
+    }
+
+    /// The currently authenticated user.
+    public var viewer: Viewer {
+      get {
+        return Viewer(snapshot: snapshot["viewer"]! as! Snapshot)
+      }
+      set {
+        snapshot.updateValue(newValue.snapshot, forKey: "viewer")
+      }
+    }
+
+    public struct Viewer: GraphQLSelectionSet {
+      public static let possibleTypes = ["User"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("name", type: .scalar(String.self)),
+        GraphQLField("avatarUrl", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(name: String? = nil, avatarUrl: String) {
+        self.init(snapshot: ["__typename": "User", "name": name, "avatarUrl": avatarUrl])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// The user's public profile name.
+      public var name: String? {
+        get {
+          return snapshot["name"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "name")
+        }
+      }
+
+      /// A URL pointing to the user's public avatar.
+      public var avatarUrl: String {
+        get {
+          return snapshot["avatarUrl"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "avatarUrl")
+        }
+      }
+    }
+  }
+}
+
 public final class SearchRepositoriesQuery: GraphQLQuery {
   public static let operationString =
     "query SearchRepositories($queryString: String!, $first: Int!, $after: String) {\n  search(query: $queryString, type: REPOSITORY, first: $first, after: $after) {\n    __typename\n    repositoryCount\n    edges {\n      __typename\n      node {\n        __typename\n        ... on Repository {\n          name\n          nameWithOwner\n          owner {\n            __typename\n            login\n            avatarUrl\n          }\n          shortDescriptionHTML\n          repositoryTopics(first: 100) {\n            __typename\n            edges {\n              __typename\n              node {\n                __typename\n                topic {\n                  __typename\n                  name\n                }\n              }\n            }\n          }\n          primaryLanguage {\n            __typename\n            name\n            color\n          }\n          stargazers {\n            __typename\n            totalCount\n          }\n          url\n          updatedAt\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      __typename\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}"

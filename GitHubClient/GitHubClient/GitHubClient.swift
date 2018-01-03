@@ -10,13 +10,40 @@ import Foundation
 import Apollo
 import UIKit
 import Extentions
+import OAuthSwift
+
+fileprivate let oauthswift = OAuth2Swift(
+    consumerKey:    "4dd6e2ec2e03119aa7bd",
+    consumerSecret: "6e1847dac03635fa3d0e9de2c28c86f57f4d38b0",
+    authorizeUrl:   "https://github.com/login/oauth/authorize",
+    accessTokenUrl: "https://github.com/login/oauth/access_token",
+    responseType:   "token"
+)
+
+fileprivate let callbackUrl = URL(string: "zizi4n5githubmobile://oauth-callback")!
 
 public class GitHubClient {
     
+    static public func login(resultHandler: @escaping ((String?, Error?) -> Swift.Void)) {
+        
+        let state = generateState(withLength: 20)
+        let _ = oauthswift.authorize(
+            withCallbackURL: callbackUrl, scope: "repo", state: state,
+            success: { credential, response, parameters in
+                resultHandler(credential.oauthToken, nil)
+            },
+                failure: { error in
+                    resultHandler(nil, error)
+            }
+        )
+    }
+    
     private let apollo: ApolloClient
+    public let token: String
     public var isLoading = false
-
+    
     public init(token: String) {
+        self.token = token
         let configuration: URLSessionConfiguration = .default
         configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(token)"]
         configuration.requestCachePolicy = .reloadIgnoringLocalCacheData // To avoid 412
@@ -25,6 +52,23 @@ public class GitHubClient {
         apollo = ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
     }
 
+    public func getLoginUser(resultHandler: @escaping ((GitHubUser?, Error?) -> Swift.Void)) {
+        apollo.fetch(query: LoginUserQuery(), cachePolicy: .fetchIgnoringCacheData) { (result, error) in
+            
+            if let error = error {
+                print("Error: \(error)");
+                return resultHandler(nil, error)
+            }
+            
+            guard let name = result?.data?.viewer.name, let avatarUrl = result?.data?.viewer.avatarUrl else {
+                return resultHandler(nil, error)
+            }
+            
+            let user = GitHubUser(name: name, avatarUrl: URL(string: avatarUrl)!)
+            return resultHandler(user, nil)
+        }
+    }
+    
     public func getRepositories(first: Int, after: GitHubRepository? = nil, resultHandler: @escaping ((Int, [GitHubRepository], Error?) -> Swift.Void)) {
         isLoading = true
         let queryString = "language:Swift sort:stars-desc" // 昇順
