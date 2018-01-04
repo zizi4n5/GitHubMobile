@@ -33,7 +33,7 @@ pod install
 1. 読込速度の改善施策として、GitHubリポジトリデータの取得処理では`REST API`ではなく、これから主流になっていく可能性が高いと言われている`GraphQL API`を採用し、必要な情報のみをGitHubから取得するように対応しています。  
   ※ GitHubはGraphQLへの移行を推奨([Migrating from REST to GraphQL](https://developer.github.com/v4/guides/migrating-from-rest/)）
 
-2. 読込速度の改善施策として、一度に全件取得するのではなく、初回読込時に30件、以降は下方向へのスクロール量によって20件ずつ動的に追加読込して、体感速度の改善を実施しています。
+2. 読込速度の改善施策として、一度に全件取得するのではなく、初回読込時に50件、以降は下方向へのスクロール量によって20件ずつ動的に追加読込して、体感速度の改善を実施しています。
 
 3. UX向上施策として以下の対応を実施しています。  
   ・「[【Swift】少しの手間で出来る！iOS アプリの UX改善 Tips 教えます](https://tech.recruit-mp.co.jp/mobile/ios-ux-tips/)」で紹介されている内容すべてに対応  
