@@ -1,5 +1,5 @@
 //
-//  GitHubRepository.swift
+//  GitHubUser.swift
 //  GitHubMobile
 //
 //  Created by zizi4n5 on 2017/12/29.
