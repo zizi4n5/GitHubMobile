@@ -5,7 +5,6 @@
 //  Created by SakuraiYoichiro on 2017/11/27.
 //  Copyright © 2017年 Yoichiro Sakurai. All rights reserved.
 //
-import UIKit
 
 extension String {
     public func convertHtml(withFont: UIFont? = nil, align: NSTextAlignment = .left) -> NSAttributedString {

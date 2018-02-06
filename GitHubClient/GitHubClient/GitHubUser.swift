@@ -6,11 +6,6 @@
 //  Copyright © 2017年 zizi4n5. All rights reserved.
 //
 
-import Foundation
-import UIKit
-import Apollo
-
-
 public class GitHubUser {
     
     public var name: String!

@@ -6,9 +6,7 @@
 //  Copyright © 2017年 zizi4n5. All rights reserved.
 //
 
-import Foundation
 import Apollo
-import UIKit
 import Extentions
 import OAuthSwift
 

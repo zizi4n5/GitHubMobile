@@ -6,9 +6,6 @@
 //  Copyright © 2017年 zizi4n5. All rights reserved.
 //
 
-import UIKit
-import Foundation
-
 extension UIColor {
     public convenience init(hex16: UInt16) {
         let alpha = CGFloat((hex16 >> 12) & 0xf) / 0xf

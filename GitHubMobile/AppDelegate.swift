@@ -6,7 +6,6 @@
 //  Copyright © 2017年 zizi4n5. All rights reserved.
 //
 
-import UIKit
 import OAuthSwift
 
 @UIApplicationMain
