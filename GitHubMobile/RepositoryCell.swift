@@ -34,7 +34,7 @@ class RepositoryCell: UITableViewCell {
             avatarImage.image = nil
             avatarImage.af_setImage(withURL: repository.owner.avatarUrl)
             nameWithOwner.text = repository.nameWithOwner
-            shortDescriptionHTML.attributedText = repository.shortDescriptionHTML.convertHtml()
+            shortDescriptionHTML.attributedText = repository.shortDescriptionHTML.convertHtml(cache: true)
             stars.text = repository.stargazers.totalCount < 1000 ? "★ \(repository.stargazers.totalCount)" :
             "★ \(String(format: "%.1f", Float(repository.stargazers.totalCount) / 1000))k"
             hideSkeleton()

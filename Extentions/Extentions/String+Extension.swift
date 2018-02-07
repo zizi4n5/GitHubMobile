@@ -6,8 +6,15 @@
 //  Copyright © 2017年 Yoichiro Sakurai. All rights reserved.
 //
 
+fileprivate var convertHtmlCache = Dictionary<String, NSAttributedString>()
+
 extension String {
     public func convertHtml(withFont: UIFont? = nil, align: NSTextAlignment = .left) -> NSAttributedString {
+        
+        if let cache = convertHtmlCache[self] {
+            return cache
+        }
+
         if let data = self.data(using: .utf8, allowLossyConversion: true),
             let attributedText = try? NSAttributedString(
                 data: data,
@@ -43,5 +50,21 @@ extension String {
         }
         
         return NSAttributedString()
+    }
+    
+    public func convertHtml(withFont: UIFont? = nil, align: NSTextAlignment = .left, cache: Bool = false) -> NSAttributedString {
+
+        let convertHtml = self.convertHtml(withFont: withFont, align: align)
+        
+        if cache && convertHtmlCache[self] == nil {
+            convertHtmlCache[self] = convertHtml
+        }
+
+        return convertHtml
+    }
+    
+    public static func clearConvertHtmlCache() -> Void {
+        
+        convertHtmlCache.removeAll()
     }
 }
