@@ -58,66 +58,78 @@ public class GitHubClient {
                 return resultHandler(nil, error)
             }
             
-            guard let name = result?.data?.viewer.name, let avatarUrl = result?.data?.viewer.avatarUrl else {
+            guard let viewer = result?.data?.viewer else {
                 return resultHandler(nil, error)
             }
-            
-            let user = GitHubUser(name: name, avatarUrl: URL(string: avatarUrl)!)
+
+            let jsonData = try! JSONSerialization.data(withJSONObject: viewer.snapshot, options: [])
+            let user = try! JSONDecoder().decode(GitHubUser.self, from: jsonData)
             return resultHandler(user, nil)
         }
     }
     
-    public func getRepositories(first: Int, after: GitHubRepository? = nil, resultHandler: @escaping ((Int, [GitHubRepository], Error?) -> Swift.Void)) {
+    public func getRepositories(first: Int, after: GitHubPageInfo? = nil, resultHandler: @escaping ((GitHubPageInfo?, [GitHubRepository?], Error?) -> Swift.Void)) {
         isLoading = true
         let queryString = "language:Swift sort:stars-desc" // 昇順
         
 //        apollo.fetch(query: SearchRepositoriesQuery(queryString: queryString, first: first, after: after)) { (result, error) in
-        apollo.fetch(query: SearchRepositoriesQuery(queryString: queryString, first: first, after: after?.cursor), cachePolicy: .fetchIgnoringCacheData) { (result, error) in
+        apollo.fetch(query: SearchRepositoriesQuery(queryString: queryString, first: first, after: after?.endCursor), cachePolicy: .fetchIgnoringCacheData) { (result, error) in
             
             defer {
                 self.isLoading = false
             }
         
-            var repositories = [GitHubRepository]()
-            
             if let error = error {
                 print("Error: \(error)");
-                return resultHandler(0, repositories, error)
-            }
-            
-            guard let totalCount = result?.data?.search.repositoryCount, let edges = result?.data?.search.edges else {
-                return resultHandler(0, repositories, nil)
             }
 
-            for edge in edges {
-                guard let edge = edge, let asRepository = edge.node?.asRepository else {
-                    continue
-                }
-                
-                let repository = GitHubRepository()
-                repository.owner = (asRepository.owner.login, URL(string: asRepository.owner.avatarUrl)!, OwnerType(rawValue: asRepository.owner.__typename)!)
-                repository.name = asRepository.name
-                repository.nameWithOwner = asRepository.nameWithOwner
-                repository.shortDescriptionHTML = asRepository.shortDescriptionHtml.convertHtml()
-                repository.stargazersTotalCount = asRepository.stargazers.totalCount
-                repository.url = URL(string: asRepository.url)
-                repository.updatedAt = asRepository.updatedAt
-                repository.cursor = edge.cursor
-
-                if let primaryLanguage = asRepository.primaryLanguage {
-                    repository.primaryLanguage = (primaryLanguage.name, UIColor(hexString: primaryLanguage.color))
-                }
-                
-                asRepository.repositoryTopics.edges?.forEach { topicsEdge in
-                    if let topic = topicsEdge?.node?.topic.name {
-                        repository.topics.append(topic)
-                    }
-                }
-                
-                repositories.append(repository)
-            }
-            
-            return resultHandler(totalCount, repositories, nil)
+            let pageInfo = self.getPageInfo(from: result)
+            let repositories = self.getRepositories(from: result)
+            return resultHandler(pageInfo, repositories, nil)
         }
+    }
+    
+    
+    private func getPageInfo(from result: GraphQLResult<SearchRepositoriesQuery.Data>?) -> GitHubPageInfo? {
+        
+        guard let qlPageInfo = result?.data?.search.pageInfo else {
+            return nil
+        }
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: qlPageInfo.snapshot, options: [])
+            let pageInfo = try JSONDecoder().decode(GitHubPageInfo.self, from: jsonData)
+            return pageInfo
+        } catch let error {
+            print("Error = \(error)")
+            return nil
+        }
+    }
+    
+    
+    private func getRepositories(from result: GraphQLResult<SearchRepositoriesQuery.Data>?) -> [GitHubRepository] {
+        
+        var repositories = [GitHubRepository]()
+        
+        guard let edges = result?.data?.search.edges else {
+            return repositories
+        }
+        
+        for edge in edges {
+            
+            guard let qlRepository = edge?.node?.asRepository else {
+                continue
+            }
+            
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: qlRepository.snapshot, options: [])
+                let repository = try JSONDecoder().decode(GitHubRepository.self, from: jsonData)
+                repositories.append(repository)
+            } catch let error {
+                print("Error = \(error)")
+            }
+        }
+        
+        return repositories
     }
 }

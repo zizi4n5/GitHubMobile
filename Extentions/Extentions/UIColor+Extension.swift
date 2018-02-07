@@ -7,6 +7,7 @@
 //
 
 extension UIColor {
+    
     public convenience init(hex16: UInt16) {
         let alpha = CGFloat((hex16 >> 12) & 0xf) / 0xf
         let red = CGFloat((hex16 >> 8) & 0xf) / 0xf
@@ -14,6 +15,7 @@ extension UIColor {
         let blue = CGFloat(hex16 & 0xf) / 0xf
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
+    
     public convenience init(hex32: UInt32) {
         let alpha = CGFloat((hex32 >> 24) & 0xff) / 0xff
         let red = CGFloat((hex32 >> 16) & 0xff) / 0xff
@@ -21,6 +23,7 @@ extension UIColor {
         let blue = CGFloat(hex32 & 0xff) / 0xff
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
+    
     public convenience init?(hexString: String?) {
         guard var hexStr = hexString else {
             return nil
@@ -51,5 +54,18 @@ extension UIColor {
         default:
             return nil
         }
+    }
+    
+    public func toHexStringARGB() -> String {
+        
+        var alpha:CGFloat = 0
+        var red:CGFloat = 0
+        var green:CGFloat = 0
+        var blue:CGFloat = 0
+        
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        let rgba = Int(alpha * 0xff) << 24 | Int(red * 0xff) << 16 | Int(green * 0xff) << 8 | Int(blue * 0xff) << 0
+        
+        return String(format:"#%08x", rgba)
     }
 }

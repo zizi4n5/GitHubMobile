@@ -29,14 +29,14 @@ class RepositoryCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func initialize(repository: GitHubRepository) {
-        if let _ = repository.url {
+    func initialize(repository: GitHubRepository?) {
+        if let repository = repository {
             avatarImage.image = nil
             avatarImage.af_setImage(withURL: repository.owner.avatarUrl)
             nameWithOwner.text = repository.nameWithOwner
-            shortDescriptionHTML.attributedText = repository.shortDescriptionHTML
-            stars.text = repository.stargazersTotalCount < 1000 ? "★ \(repository.stargazersTotalCount)" :
-            "★ \(String(format: "%.1f", Float(repository.stargazersTotalCount) / 1000))k"
+            shortDescriptionHTML.attributedText = repository.shortDescriptionHTML.convertHtml()
+            stars.text = repository.stargazers.totalCount < 1000 ? "★ \(repository.stargazers.totalCount)" :
+            "★ \(String(format: "%.1f", Float(repository.stargazers.totalCount) / 1000))k"
             hideSkeleton()
         } else {
             showAnimatedGradientSkeleton()
