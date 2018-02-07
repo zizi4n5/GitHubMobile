@@ -32,9 +32,9 @@ class RepositoryCell: UITableViewCell {
     func initialize(repository: GitHubRepository?) {
         if let repository = repository {
             avatarImage.image = nil
-            avatarImage.af_setImage(withURL: repository.owner.avatarUrl)
+            avatarImage.af_setImage(withURL: URL(string: repository.owner.avatarUrl)!)
             nameWithOwner.text = repository.nameWithOwner
-            shortDescriptionHTML.attributedText = repository.shortDescriptionHTML.convertHtml()
+            shortDescriptionHTML.attributedText = repository.shortDescriptionHtml.convertHtml()
             stars.text = repository.stargazers.totalCount < 1000 ? "★ \(repository.stargazers.totalCount)" :
             "★ \(String(format: "%.1f", Float(repository.stargazers.totalCount) / 1000))k"
             hideSkeleton()

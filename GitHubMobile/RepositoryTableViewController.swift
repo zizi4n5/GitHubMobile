@@ -65,7 +65,7 @@ class RepositoryTableViewController: UITableViewController, HidingNavigationBarM
         
         let avatarSize = CGSize(width: 40.0, height: 40.0)
         let filter = AspectScaledToFillSizeCircleFilter(size: avatarSize)
-        downloader.download(URLRequest(url: user.avatarUrl), filter: filter) { response in
+        downloader.download(URLRequest(url: URL(string:user.avatarUrl)!), filter: filter) { response in
             if let image = response.result.value {
                 let avatarButton = UIButton(frame: CGRect(origin: CGPoint(), size: avatarSize))
                 avatarButton.setBackgroundImage(image, for: .normal)
@@ -216,7 +216,7 @@ class RepositoryTableViewController: UITableViewController, HidingNavigationBarM
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detailVC = segue.destination as? RepositoryDetailViewController, let repository = sender as? GitHubRepository {
             detailVC.repositoryName = repository.name
-            detailVC.url = repository.url
+            detailVC.url = URL(string: repository.url)!
         }
     }
 }
