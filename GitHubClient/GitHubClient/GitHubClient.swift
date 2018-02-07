@@ -10,6 +10,10 @@ import Apollo
 import Extentions
 import OAuthSwift
 
+public typealias GitHubUser = LoginUserQuery.Data.Viewer
+public typealias GitHubPageInfo = SearchRepositoriesQuery.Data.Search.PageInfo
+public typealias GitHubRepository = SearchRepositoriesQuery.Data.Search.Edge.Node.AsRepository
+
 fileprivate let oauthswift = OAuth2Swift(
     consumerKey:    "4dd6e2ec2e03119aa7bd",
     consumerSecret: "6e1847dac03635fa3d0e9de2c28c86f57f4d38b0",
@@ -61,10 +65,8 @@ public class GitHubClient {
             guard let viewer = result?.data?.viewer else {
                 return resultHandler(nil, error)
             }
-
-            let jsonData = try! JSONSerialization.data(withJSONObject: viewer.snapshot, options: [])
-            let user = try! JSONDecoder().decode(GitHubUser.self, from: jsonData)
-            return resultHandler(user, nil)
+            
+            return resultHandler(viewer, nil)
         }
     }
     
@@ -89,21 +91,13 @@ public class GitHubClient {
         }
     }
     
-    
-    private func getPageInfo(from result: GraphQLResult<SearchRepositoriesQuery.Data>?) -> GitHubPageInfo? {
+    private func getPageInfo(from result: GraphQLResult<SearchRepositoriesQuery.Data>?) -> SearchRepositoriesQuery.Data.Search.PageInfo? {
         
-        guard let qlPageInfo = result?.data?.search.pageInfo else {
+        guard let pageInfo = result?.data?.search.pageInfo else {
             return nil
         }
         
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: qlPageInfo.snapshot, options: [])
-            let pageInfo = try JSONDecoder().decode(GitHubPageInfo.self, from: jsonData)
-            return pageInfo
-        } catch let error {
-            print("Error = \(error)")
-            return nil
-        }
+        return pageInfo
     }
     
     
@@ -117,17 +111,11 @@ public class GitHubClient {
         
         for edge in edges {
             
-            guard let qlRepository = edge?.node?.asRepository else {
+            guard let repository = edge?.node?.asRepository else {
                 continue
             }
             
-            do {
-                let jsonData = try JSONSerialization.data(withJSONObject: qlRepository.snapshot, options: [])
-                let repository = try JSONDecoder().decode(GitHubRepository.self, from: jsonData)
-                repositories.append(repository)
-            } catch let error {
-                print("Error = \(error)")
-            }
+            repositories.append(repository)
         }
         
         return repositories

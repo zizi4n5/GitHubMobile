@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		052F4CDF1FF8CB6E009D8C66 /* GitHubGraphQLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F4CD91FF8CB6D009D8C66 /* GitHubGraphQLAPI.swift */; };
 		052F4CE01FF8CB6E009D8C66 /* GitHubGraphQLAPI.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 052F4CDA1FF8CB6E009D8C66 /* GitHubGraphQLAPI.graphql */; };
-		052F4CE21FF8CB6E009D8C66 /* GitHubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F4CDC1FF8CB6E009D8C66 /* GitHubRepository.swift */; };
 		052F4CE31FF8CB6E009D8C66 /* GitHubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F4CDD1FF8CB6E009D8C66 /* GitHubClient.swift */; };
 		052F4CE71FF8CBDC009D8C66 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 052F4CE61FF8CBDC009D8C66 /* Apollo.framework */; };
 		052F4D211FF8D129009D8C66 /* Extentions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 052F4D221FF8D129009D8C66 /* Extentions.framework */; };
@@ -17,8 +16,6 @@
 		053075701FF8CAAF00489708 /* GitHubClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0530756F1FF8CAAF00489708 /* GitHubClientTests.swift */; };
 		053075721FF8CAAF00489708 /* GitHubClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 053075641FF8CAAE00489708 /* GitHubClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0576AFBA1FFC6BD200235DE5 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0576AFB91FFC6BD100235DE5 /* OAuthSwift.framework */; };
-		0576AFBE1FFCBD6D00235DE5 /* GitHubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0576AFBD1FFCBD6C00235DE5 /* GitHubUser.swift */; };
-		0593FBE5202A79B10058A578 /* GitHubPageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593FBE4202A79B10058A578 /* GitHubPageInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +31,6 @@
 /* Begin PBXFileReference section */
 		052F4CD91FF8CB6D009D8C66 /* GitHubGraphQLAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubGraphQLAPI.swift; sourceTree = "<group>"; };
 		052F4CDA1FF8CB6E009D8C66 /* GitHubGraphQLAPI.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GitHubGraphQLAPI.graphql; sourceTree = "<group>"; };
-		052F4CDC1FF8CB6E009D8C66 /* GitHubRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubRepository.swift; sourceTree = "<group>"; };
 		052F4CDD1FF8CB6E009D8C66 /* GitHubClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubClient.swift; sourceTree = "<group>"; };
 		052F4CE61FF8CBDC009D8C66 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = ../Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
 		052F4D221FF8D129009D8C66 /* Extentions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Extentions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,8 +41,6 @@
 		0530756F1FF8CAAF00489708 /* GitHubClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubClientTests.swift; sourceTree = "<group>"; };
 		053075711FF8CAAF00489708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0576AFB91FFC6BD100235DE5 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = ../Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
-		0576AFBD1FFCBD6C00235DE5 /* GitHubUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubUser.swift; sourceTree = "<group>"; };
-		0593FBE4202A79B10058A578 /* GitHubPageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubPageInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +99,6 @@
 			children = (
 				053075641FF8CAAE00489708 /* GitHubClient.h */,
 				052F4CDD1FF8CB6E009D8C66 /* GitHubClient.swift */,
-				0593FBE4202A79B10058A578 /* GitHubPageInfo.swift */,
-				0576AFBD1FFCBD6C00235DE5 /* GitHubUser.swift */,
-				052F4CDC1FF8CB6E009D8C66 /* GitHubRepository.swift */,
 				052F4CDA1FF8CB6E009D8C66 /* GitHubGraphQLAPI.graphql */,
 				052F4CD91FF8CB6D009D8C66 /* GitHubGraphQLAPI.swift */,
 				053075651FF8CAAE00489708 /* Info.plist */,
@@ -254,11 +245,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				052F4CE31FF8CB6E009D8C66 /* GitHubClient.swift in Sources */,
-				0593FBE5202A79B10058A578 /* GitHubPageInfo.swift in Sources */,
-				0576AFBE1FFCBD6D00235DE5 /* GitHubUser.swift in Sources */,
-				052F4CE21FF8CB6E009D8C66 /* GitHubRepository.swift in Sources */,
 				052F4CDF1FF8CB6E009D8C66 /* GitHubGraphQLAPI.swift in Sources */,
+				052F4CE31FF8CB6E009D8C66 /* GitHubClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
