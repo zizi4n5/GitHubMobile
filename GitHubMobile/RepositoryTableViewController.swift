@@ -23,7 +23,9 @@ class RepositoryTableViewController: UITableViewController, HidingNavigationBarM
     internal var user: GitHubUser!
 
     private var hidingNavBarManager: HidingNavigationBarManager?
-    var repositories = [GitHubRepository]()
+    
+    var pageInfo: GitHubPageInfo?
+    var repositories = [GitHubRepository?]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +39,7 @@ class RepositoryTableViewController: UITableViewController, HidingNavigationBarM
         tableView.rowHeight = UITableViewAutomaticDimension
         refreshControl?.addTarget(self, action: #selector(RepositoryTableViewController.refresh(sender:)), for: .valueChanged)
         
-        repositories = [GitHubRepository](repeating: GitHubRepository(), count: firstPageSize)
+        repositories = [GitHubRepository?](repeating: nil, count: firstPageSize)
         loadRepositories(first: firstPageSize)
         tableView.reloadData()
     }
@@ -73,19 +75,22 @@ class RepositoryTableViewController: UITableViewController, HidingNavigationBarM
         }
     }
     
-    func loadRepositories(first: Int, after: GitHubRepository? = nil) {
+    func loadRepositories(first: Int, after: GitHubPageInfo? = nil) {
 
         guard let github = github else {
             self.refreshControl?.endRefreshing()
             return
         }
         
-        github.getRepositories(first: first, after: after)  { (totalCount, repositories, error) in
+        github.getRepositories(first: first, after: after)  { (pageInfo, repositories, error) in
 
             if let error = error {
                 print("Error: \(error)");
                 return
             }
+            
+            // ページ情報の更新
+            self.pageInfo = pageInfo
 
             // 追加データ読込の場合
             if let _ = after {
@@ -105,7 +110,7 @@ class RepositoryTableViewController: UITableViewController, HidingNavigationBarM
                 // このため、暫定的に以下の対応を実施。
                 //  1. 取得した値の1番目がダントツ１位のAlamofireかチェックして異なる場合はリトライを行う
                 //  2. GitHubClient.getRepositoriesでCacheを利用しないように設定を変更
-                guard repositories[0].nameWithOwner == "Alamofire/Alamofire" else {
+                guard repositories[0]?.nameWithOwner == "Alamofire/Alamofire" else {
                     self.loadRepositories(first: first)
                     return
                 }
@@ -162,14 +167,14 @@ class RepositoryTableViewController: UITableViewController, HidingNavigationBarM
 
         // 下部までスクロールした場合、前もって次のデータを読み込む
         if !github.isLoading && indexPath.row > repositories.count - pageLoadThreshold {
-            loadRepositories(first: nextPageSize, after: repositories.last)
+            loadRepositories(first: nextPageSize, after: pageInfo)
         }
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if let _ = repositories[indexPath.row].url {
+        if let _ = repositories[indexPath.row] {
             return indexPath
         } else {
             return nil
@@ -177,7 +182,7 @@ class RepositoryTableViewController: UITableViewController, HidingNavigationBarM
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let _ = repositories[indexPath.row].url {
+        if let _ = repositories[indexPath.row] {
             performSegue(withIdentifier: "OpenRepositoryDetail", sender: repositories[indexPath.row])
         }
     }

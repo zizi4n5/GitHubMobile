@@ -18,6 +18,7 @@
 		053075721FF8CAAF00489708 /* GitHubClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 053075641FF8CAAE00489708 /* GitHubClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0576AFBA1FFC6BD200235DE5 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0576AFB91FFC6BD100235DE5 /* OAuthSwift.framework */; };
 		0576AFBE1FFCBD6D00235DE5 /* GitHubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0576AFBD1FFCBD6C00235DE5 /* GitHubUser.swift */; };
+		0593FBE5202A79B10058A578 /* GitHubPageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593FBE4202A79B10058A578 /* GitHubPageInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		053075711FF8CAAF00489708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0576AFB91FFC6BD100235DE5 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = ../Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
 		0576AFBD1FFCBD6C00235DE5 /* GitHubUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubUser.swift; sourceTree = "<group>"; };
+		0593FBE4202A79B10058A578 /* GitHubPageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubPageInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				053075641FF8CAAE00489708 /* GitHubClient.h */,
 				052F4CDD1FF8CB6E009D8C66 /* GitHubClient.swift */,
+				0593FBE4202A79B10058A578 /* GitHubPageInfo.swift */,
 				0576AFBD1FFCBD6C00235DE5 /* GitHubUser.swift */,
 				052F4CDC1FF8CB6E009D8C66 /* GitHubRepository.swift */,
 				052F4CDA1FF8CB6E009D8C66 /* GitHubGraphQLAPI.graphql */,
@@ -252,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				052F4CE31FF8CB6E009D8C66 /* GitHubClient.swift in Sources */,
+				0593FBE5202A79B10058A578 /* GitHubPageInfo.swift in Sources */,
 				0576AFBE1FFCBD6D00235DE5 /* GitHubUser.swift in Sources */,
 				052F4CE21FF8CB6E009D8C66 /* GitHubRepository.swift in Sources */,
 				052F4CDF1FF8CB6E009D8C66 /* GitHubGraphQLAPI.swift in Sources */,
